@@ -2,7 +2,7 @@
 
 File: numintense_pro.py
 
-Description: Advanced Phone Number OSINT tool (Kali Linux & Termux compatible)
+#Description: Advanced Phone Number OSINT tool (Kali Linux & Termux compatible)
 
 import phonenumbers from phonenumbers import geocoder, carrier, timezone import argparse from modules.google_dorking import generate_dorks from modules.telegram_check import telegram_lookup from colorama import init, Fore
 
