@@ -21,7 +21,9 @@
 ## ⚙️ Install
 
 ```bash
-git clone https://github.com/GulsHanyadav788/NumIntense.git
-cd NumIntense
-pip install -r requirements.txt
-python3 numintense_pro.py +919876543210
+
+git clone https://github.com/GulsHanyadav788/NumIntense.git \
+&& cd NumIntense \
+&& chmod +x numintense_pro.py \
+&& pip install -r requirements.txt \
+&& python3 numintense_pro.py +919876543210
