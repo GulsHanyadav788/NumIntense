@@ -1,4 +1,4 @@
-# 📱 NumIntense 
+📱 NumIntense 
 
 **NumIntense ** is an advanced phone number OSINT framework built in Python for **Kali Linux** and **Termux**. It can extract intelligence about a phone number using offline tools and open-source investigation techniques.
 
