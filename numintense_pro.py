@@ -13,24 +13,112 @@ import sys
 import requests
 import json
 import time
+import os
 from datetime import datetime
 from colorama import init, Fore, Style
 import re
-import os
+
+# Import modules
+try:
+    from modules.email_breach_check import EmailBreachChecker
+    from modules.facebook_check import AdvancedFacebookOSINT
+    from modules.generate_dorks import AdvancedDorkGenerator
+    from modules.spam_check import AdvancedSpamChecker
+    from modules.telegram_lookup import AdvancedTelegramLookup
+    from modules.truecaller_lookup import AdvancedTruecallerLookup
+    from modules.whois_lookup import AdvancedWHOISLookup
+    
+    MODULES_AVAILABLE = True
+except ImportError as e:
+    print(Fore.RED + f"[!] Some modules not available: {e}")
+    MODULES_AVAILABLE = False
+
+# Import API modules
+try:
+    from apis.numverify import NumVerifyAPI
+    from apis.abstractapi import AbstractAPI
+    APIS_AVAILABLE = True
+except ImportError:
+    APIS_AVAILABLE = False
 
 # Initialize colorama
 init(autoreset=True)
 
 class NumIntensePro:
-    def __init__(self):
+    def __init__(self, config_file="config.json"):
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         })
         self.results = {}
+        self.config = self.load_config(config_file)
+        
+        # Initialize modules
+        if MODULES_AVAILABLE:
+            self.email_checker = EmailBreachChecker()
+            self.facebook_osint = AdvancedFacebookOSINT()
+            self.dork_generator = AdvancedDorkGenerator()
+            self.spam_checker = AdvancedSpamChecker()
+            self.telegram_lookup = AdvancedTelegramLookup()
+            self.truecaller_lookup = AdvancedTruecallerLookup()
+            self.whois_lookup = AdvancedWHOISLookup()
+        
+    def load_config(self, config_file):
+        """Load API configuration from file"""
+        default_config = {
+            "apis": {
+                "numverify": "",
+                "abstractapi": "",
+                "hibp": ""
+            },
+            "settings": {
+                "rate_limit_delay": 1,
+                "timeout": 10,
+                "save_reports": False
+            }
+        }
+        
+        try:
+            if os.path.exists(config_file):
+                with open(config_file, 'r') as f:
+                    user_config = json.load(f)
+                    # Merge with default config
+                    default_config.update(user_config)
+                print(Fore.GREEN + f"[+] Loaded configuration from {config_file}")
+            else:
+                print(Fore.YELLOW + f"[!] Config file {config_file} not found. Using defaults.")
+                self.create_sample_config(config_file)
+                
+        except Exception as e:
+            print(Fore.RED + f"[!] Error loading config: {e}")
+            
+        return default_config
+    
+    def create_sample_config(self, config_file):
+        """Create sample configuration file"""
+        sample_config = {
+            "apis": {
+                "numverify": "YOUR_NUMVERIFY_API_KEY_HERE",
+                "abstractapi": "YOUR_ABSTRACTAPI_KEY_HERE",
+                "hibp": "YOUR_HIBP_API_KEY_HERE"
+            },
+            "settings": {
+                "rate_limit_delay": 1,
+                "timeout": 10,
+                "save_reports": False
+            }
+        }
+        
+        try:
+            with open(config_file, 'w') as f:
+                json.dump(sample_config, f, indent=4)
+            print(Fore.YELLOW + f"[!] Sample config created: {config_file}")
+            print(Fore.YELLOW + "[!] Please add your API keys to the config file")
+        except Exception as e:
+            print(Fore.RED + f"[!] Error creating sample config: {e}")
 
     def validate_number(self, number):
-        """Validate and parse phone number with improved error handling"""
+        """Validate and parse phone number"""
         try:
             # Clean the number
             number = re.sub(r'[^\d+]', '', number)
@@ -57,7 +145,7 @@ class NumIntensePro:
             return None
 
     def get_basic_info(self, parsed):
-        """Display comprehensive basic information about the phone number"""
+        """Display comprehensive basic information"""
         print(Fore.CYAN + f"\n[+] Phone Number: {phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.INTERNATIONAL)}")
         print(Fore.CYAN + f"[+] E164 Format: {phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.E164)}")
         print(Fore.CYAN + f"[+] National Format: {phonenumbers.format_number(parsed, phonenumbers.PhoneNumberFormat.NATIONAL)}")
@@ -74,11 +162,10 @@ class NumIntensePro:
         else:
             print(Fore.CYAN + "[+] Timezone: Unknown")
         
-        # Check if number is possible (not necessarily valid)
         print(Fore.CYAN + f"[+] Is Possible: {phonenumbers.is_possible_number(parsed)}")
         print(Fore.CYAN + f"[+] Is Valid: {phonenumbers.is_valid_number(parsed)}")
         
-        # Number type with detailed mapping
+        # Number type
         number_type = phonenumbers.number_type(parsed)
         type_map = {
             phonenumbers.PhoneNumberType.MOBILE: "Mobile",
@@ -96,139 +183,81 @@ class NumIntensePro:
         }
         print(Fore.CYAN + f"[+] Number Type: {type_map.get(number_type, 'Unknown')}")
         
-        # Region information
         region_code = phonenumbers.region_code_for_number(parsed)
         print(Fore.CYAN + f"[+] Region Code: {region_code}")
 
-    def check_breaches(self, number):
-        """Check if phone number appears in known data breaches"""
-        print(Fore.YELLOW + "\n[🔍] Checking known data breaches...")
-        
-        # Remove any non-digit characters for breach checking
-        clean_number = re.sub(r'[^\d]', '', number)
-        
-        # Simulate breach checking with more realistic output
-        breach_indicators = [
-            "Checking Have I Been Pwned database...",
-            "Checking BreachCompilation data...",
-            "Checking DeHashed databases...",
-            "Checking Snusbase records..."
-        ]
-        
-        for indicator in breach_indicators:
-            print(Fore.YELLOW + f"  {indicator}")
-            time.sleep(0.5)
+    def run_api_checks(self, number):
+        """Run all available API checks"""
+        if not APIS_AVAILABLE:
+            print(Fore.YELLOW + "[!] API modules not available")
+            return
             
-        # Simulate random results (in real implementation, use actual APIs)
-        import random
-        if random.random() > 0.7:
-            fake_breaches = [
-                ("Adobe Breach (2013)", "2013-10-04"),
-                ("LinkedIn Breach (2012)", "2012-06-05"),
-                ("Facebook Breach (2018)", "2018-09-28")
-            ]
-            for breach_name, date in fake_breaches[:random.randint(0, 2)]:
-                print(Fore.RED + f"[!] BREACH FOUND: {breach_name} - Date: {date}")
-        else:
-            print(Fore.GREEN + "[+] No known breaches found in simulated check")
-            
-        print(Fore.YELLOW + "[!] Note: Actual breach checking requires API access to services like HaveIBeenPwned")
-
-    def social_media_lookup(self, number):
-        """Enhanced social media presence checking"""
-        print(Fore.YELLOW + "\n[🔍] Checking social media platforms...")
+        print(Fore.YELLOW + "\n[🔍] Starting API Checks...")
         
-        platforms = {
-            "Facebook": f"https://www.facebook.com/search/people/?q={number}",
-            "WhatsApp": "https://web.whatsapp.com/",
-            "Twitter": f"https://twitter.com/search?q={number}",
-            "Instagram": f"https://www.instagram.com/search/users/?q={number}",
-            "LinkedIn": f"https://www.linkedin.com/search/results/all/?keywords={number}",
-            "Signal": "https://signal.org/",
-            "Telegram": "https://t.me/",
-            "Viber": "https://www.viber.com/",
-            "WeChat": "https://www.wechat.com/",
-            "Snapchat": f"https://www.snapchat.com/add/{number}"
-        }
-        
-        for platform, url in platforms.items():
-            print(Fore.GREEN + f"[+] {platform}: {url}")
-            time.sleep(0.1)  # Small delay to avoid rate limiting
-
-    def generate_osint_links(self, number):
-        """Generate comprehensive OSINT investigation links"""
-        print(Fore.YELLOW + "\n[🔎] OSINT Investigation Links:")
-        
-        # Search Engines
-        print(Fore.MAGENTA + "\n[📊] Search Engines:")
-        search_engines = [
-            ("Google", f"https://www.google.com/search?q=%22{number}%22"),
-            ("DuckDuckGo", f"https://duckduckgo.com/?q=%22{number}%22"),
-            ("Bing", f"https://www.bing.com/search?q=%22{number}%22"),
-            ("Yandex", f"https://yandex.com/search/?text=%22{number}%22"),
-            ("Baidu", f"https://www.baidu.com/s?wd=%22{number}%22")
-        ]
-        
-        for name, url in search_engines:
-            print(Fore.GREEN + f"  {name}: {url}")
-
-        # Reverse Phone Lookup Sites
-        print(Fore.MAGENTA + "\n[📞] Reverse Phone Lookup Sites:")
-        reverse_lookup_sites = [
-            ("TrueCaller", f"https://www.truecaller.com/search/in/{number}"),
-            ("WhitePages", f"https://www.whitepages.com/phone/{number}"),
-            ("SpyDialer", f"https://www.spydialer.com/default.aspx?phone={number}"),
-            ("NumLookup", f"https://www.numlookup.com/phone/{number}"),
-            ("ZabaSearch", f"https://www.zabasearch.com/phone/{number}"),
-            ("AnyWho", f"https://www.anywho.com/phone/{number}"),
-            ("411", f"https://www.411.com/phone/{number}")
-        ]
-        
-        for name, url in reverse_lookup_sites:
-            print(Fore.GREEN + f"  {name}: {url}")
-
-        # Social Media Search
-        print(Fore.MAGENTA + "\n[👥] Social Media Search:")
-        social_searches = [
-            ("Facebook Search", f"https://www.facebook.com/search/people/?q={number}"),
-            ("LinkedIn Search", f"https://www.linkedin.com/search/results/all/?keywords={number}"),
-            ("Twitter Search", f"https://twitter.com/search?q={number}"),
-            ("Instagram Search", f"https://www.instagram.com/search/users/?q={number}")
-        ]
-        
-        for name, url in social_searches:
-            print(Fore.GREEN + f"  {name}: {url}")
-
-    def check_truecaller(self, number):
-        """Attempt to get information from Truecaller (web version)"""
-        print(Fore.YELLOW + "\n[🔍] Checking Truecaller...")
-        try:
-            # This is a simulation - Truecaller requires API access
-            print(Fore.YELLOW + "[!] Truecaller API access required for detailed information")
-            print(Fore.YELLOW + "[!] Visit: https://www.truecaller.com/search/in/" + number)
-        except Exception as e:
-            print(Fore.RED + f"[!] Error checking Truecaller: {e}")
-
-    def save_results(self, number):
-        """Save results to a file"""
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"numintense_results_{number}_{timestamp}.txt"
-        
-        try:
-            with open(filename, 'w', encoding='utf-8') as f:
-                f.write("NumIntense Pro - Results Report\n")
-                f.write("=" * 50 + "\n")
-                f.write(f"Phone Number: {number}\n")
-                f.write(f"Scan Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                f.write("\nBasic Information:\n")
-                # Add basic info to file
-                f.write(f"International Format: {phonenumbers.format_number(self.results['parsed_number'], phonenumbers.PhoneNumberFormat.INTERNATIONAL)}\n")
-                f.write(f"Country: {geocoder.description_for_number(self.results['parsed_number'], 'en')}\n")
-                f.write(f"Carrier: {carrier.name_for_number(self.results['parsed_number'], 'en')}\n")
+        # NumVerify API Check
+        if self.config['apis']['numverify']:
+            try:
+                print(Fore.YELLOW + "[+] Checking NumVerify API...")
+                api = NumVerifyAPI(self.config['apis']['numverify'])
+                result = api.validate_number(number)
                 
-            print(Fore.GREEN + f"[+] Results saved to: {filename}")
-        except Exception as e:
-            print(Fore.RED + f"[!] Error saving results: {e}")
+                if result['valid']:
+                    print(Fore.GREEN + f"[✓] NumVerify - Valid: {result['number']}")
+                    print(Fore.GREEN + f"[✓] NumVerify - Country: {result['country']}")
+                    print(Fore.GREEN + f"[✓] NumVerify - Carrier: {result['carrier']}")
+                else:
+                    print(Fore.RED + f"[!] NumVerify: {result['error']}")
+                    
+            except Exception as e:
+                print(Fore.RED + f"[!] NumVerify API Error: {e}")
+            
+            time.sleep(self.config['settings']['rate_limit_delay'])
+
+    def run_osint_checks(self, number):
+        """Run all OSINT checks"""
+        if not MODULES_AVAILABLE:
+            print(Fore.YELLOW + "[!] OSINT modules not available")
+            return
+            
+        save_reports = self.config['settings']['save_reports']
+        
+        # Spam Check
+        print(Fore.YELLOW + "\n[🚫] Running Spam Check...")
+        self.spam_checker.spam_check(number, save_report=save_reports)
+        
+        # Telegram Lookup
+        print(Fore.YELLOW + "\n[📱] Running Telegram Lookup...")
+        self.telegram_lookup.telegram_lookup(number, save_report=save_reports)
+        
+        # Truecaller Lookup
+        print(Fore.YELLOW + "\n[📞] Running Truecaller Lookup...")
+        self.truecaller_lookup.truecaller_lookup(number, save_report=save_reports)
+        
+        # Facebook OSINT
+        print(Fore.YELLOW + "\n[👤] Running Facebook OSINT...")
+        self.facebook_osint.facebook_check(number, save_output=save_reports)
+        
+        # Dork Generation
+        print(Fore.YELLOW + "\n[🎯] Generating Search Dorks...")
+        self.dork_generator.generate_dorks(number, save_output=save_reports)
+
+    def run_email_checks(self, email):
+        """Run email breach checks"""
+        if not MODULES_AVAILABLE:
+            print(Fore.YELLOW + "[!] Email module not available")
+            return
+            
+        print(Fore.YELLOW + f"\n[📧] Running Email Breach Check for: {email}")
+        self.email_checker.email_breach_check(email)
+
+    def run_whois_lookup(self, domain):
+        """Run WHOIS lookup"""
+        if not MODULES_AVAILABLE:
+            print(Fore.YELLOW + "[!] WHOIS module not available")
+            return
+            
+        print(Fore.YELLOW + f"\n[🌐] Running WHOIS Lookup for: {domain}")
+        self.whois_lookup.whois_lookup(domain, save_report=self.config['settings']['save_reports'])
 
     def banner(self):
         """Display tool banner"""
@@ -241,7 +270,7 @@ class NumIntensePro:
  ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚══════╝╚══════╝
     """)
         print(Fore.CYAN + "NumIntense Pro - Advanced Phone Number OSINT Framework")
-        print(Fore.CYAN + f"Version 2.1 | Enhanced Edition | {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(Fore.CYAN + f"Version 3.0 | Complete Edition | {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print(Fore.CYAN + "=" * 70)
 
 def check_dependencies():
@@ -267,46 +296,59 @@ def main():
         sys.exit(1)
         
     parser = argparse.ArgumentParser(description="📱 NumIntense Pro - Advanced Phone Number OSINT Tool")
-    parser.add_argument("number", help="Phone number (e.g. +919876543210 or 9876543210)")
+    parser.add_argument("target", help="Phone number (e.g. +919876543210), email, or domain")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
     parser.add_argument("-q", "--quiet", action="store_true", help="Suppress banner and minimize output")
-    parser.add_argument("-s", "--save", action="store_true", help="Save results to file")
     parser.add_argument("-a", "--all", action="store_true", help="Run all available checks")
+    parser.add_argument("-s", "--save", action="store_true", help="Save results to files")
+    parser.add_argument("-c", "--config", default="config.json", help="Config file path")
+    parser.add_argument("--email", action="store_true", help="Target is an email address")
+    parser.add_argument("--domain", action="store_true", help="Target is a domain")
     
-    # If no arguments provided, show help
     if len(sys.argv) == 1:
         parser.print_help(sys.stderr)
         sys.exit(1)
         
     args = parser.parse_args()
     
-    tool = NumIntensePro()
+    tool = NumIntensePro(args.config)
+    
+    # Update config if save flag is set
+    if args.save:
+        tool.config['settings']['save_reports'] = True
     
     if not args.quiet:
         tool.banner()
     
-    parsed = tool.validate_number(args.number)
-    if parsed:
-        print(Fore.GREEN + "\n[✓] Basic Information")
-        tool.get_basic_info(parsed)
+    # Determine target type
+    if args.email:
+        # Email check
+        tool.run_email_checks(args.target)
         
-        if args.verbose or args.all:
-            print(Fore.YELLOW + "\n[ℹ] Verbose mode enabled - Running extended checks")
-            tool.check_breaches(args.number)
-            tool.social_media_lookup(args.number)
-            tool.check_truecaller(args.number)
+    elif args.domain:
+        # Domain WHOIS check
+        tool.run_whois_lookup(args.target)
         
-        tool.generate_osint_links(args.number)
-        
-        if args.save:
-            tool.save_results(args.number)
-        
-        print(Fore.MAGENTA + "\n" + "="*70)
-        print(Fore.MAGENTA + "[+] Investigation complete. Use information responsibly and legally.")
-        print(Fore.MAGENTA + "[!] LEGAL DISCLAIMER: This tool is for educational and legitimate")
-        print(Fore.MAGENTA + "    security research purposes only. Respect privacy and applicable laws.")
     else:
-        sys.exit(1)
+        # Phone number check
+        parsed = tool.validate_number(args.target)
+        if parsed:
+            print(Fore.GREEN + "\n[✓] Basic Information")
+            tool.get_basic_info(parsed)
+            
+            if args.verbose or args.all:
+                print(Fore.YELLOW + "\n[ℹ] Running extended checks...")
+                tool.run_api_checks(args.target)
+                tool.run_osint_checks(args.target)
+            else:
+                # Run basic OSINT checks only
+                tool.run_osint_checks(args.target)
+            
+            print(Fore.MAGENTA + "\n" + "="*70)
+            print(Fore.MAGENTA + "[+] Investigation complete. Use information responsibly.")
+            print(Fore.MAGENTA + "[!] LEGAL DISCLAIMER: For educational and security research only.")
+        else:
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()
