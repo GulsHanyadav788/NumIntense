@@ -1,0 +1,12 @@
+{
+    "apis": {
+        "numverify": "YOUR_NUMVERIFY_API_KEY_HERE",
+        "abstractapi": "YOUR_ABSTRACTAPI_KEY_HERE",
+        "hibp": "YOUR_HIBP_API_KEY_HERE"
+    },
+    "settings": {
+        "rate_limit_delay": 1,
+        "timeout": 10,
+        "save_reports": false
+    }
+}
