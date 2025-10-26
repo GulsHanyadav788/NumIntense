@@ -1,409 +1,397 @@
-NumIntense Pro 🔍
+🔥 NumIntense Pro - Ultimate OSINT Intelligence Suite
 
-Advanced Phone Number & Digital Footprint OSINT Intelligence Tool
+<div align="center">
 
-https://img.shields.io/badge/Python-3.6%2B-blue
-https://img.shields.io/badge/Platform-Kali%20Linux%20%7C%20Termux%20%7C%20Windows%20%7C%20macOS-green
+https://img.shields.io/badge/Version-3.0.0-red
+https://img.shields.io/badge/Python-3.6+-blue
+https://img.shields.io/badge/Platform-Kali%20|%20Termux%20|%20Windows%20|%20macOS-green
 https://img.shields.io/badge/License-MIT-yellow
+https://img.shields.io/badge/OSINT-Advanced-orange
 
-🌟 Overview
+Advanced Phone Number Intelligence & Digital Reconnaissance Platform
 
-NumIntense Pro is a comprehensive OSINT (Open Source Intelligence) framework designed for advanced phone number investigation and digital footprint analysis. It combines multiple intelligence sources into a single, powerful tool for security researchers, penetration testers, and digital investigators.
+</div>
 
-🚀 Features
+🚀 What is NumIntense Pro?
 
-📞 Phone Number Intelligence
+NumIntense Pro is a cutting-edge OSINT (Open Source Intelligence) framework designed for professional security researchers, penetration testers, and digital investigators. It provides comprehensive digital footprint analysis with military-grade intelligence gathering capabilities.
 
-· Basic Information: Carrier, location, timezone, number type
-· International Format Support: Automatic country code detection
-· Validation & Parsing: Advanced phone number validation using Google's libphonenumber
-· Multi-format Output: E164, International, and National formats
+---
 
-🔍 OSINT Integration
+⚡ Quick Start
 
-· Facebook Investigation: Profile search, group discovery, and advanced dorks
-· Telegram Lookup: Username generation and direct profile links
-· Truecaller Integration: Multi-source reverse phone lookup
-· Spam Detection: Comprehensive spam database checks
-· Search Automation: Advanced Google dork generation
-
-📧 Digital Footprint Analysis
-
-· Email Breach Checking: Have I Been Pwned integration
-· Domain Intelligence: WHOIS lookups and registration details
-· Social Media Presence: Multi-platform account discovery
-
-💾 Advanced Capabilities
-
-· Batch Processing: Multiple targets in single operation
-· Report Generation: Professional text reports
-· API Integration: Extensible plugin system
-· Rate Limiting: Responsible API usage
-· Cross-Platform: Works on Kali Linux, Termux, Windows, and macOS
-
-🛠 Installation
-
-Quick Install (Recommended)
+🎯 One-Command Installation
 
 ```bash
-# Download all project files to a directory, then run:
+# Automated installation (Recommended)
+curl -s https://raw.githubusercontent.com/your-repo/numintense_pro/main/install.py | python3
+```
+
+🛠 Manual Installation
+
+```bash
+git clone https://github.com/your-repo/numintense_pro.git
+cd numintense_pro
 python install.py
 ```
 
-Manual Installation
+🚀 Instant Usage
 
 ```bash
-# Install dependencies
-pip install phonenumbers requests colorama whois python-whois beautifulsoup4 lxml urllib3
-
-# Or using requirements file
-pip install -r requirements.txt
-
-# Verify installation
-python main.py --help
+python main.py +1234567890 --full-scan
 ```
 
-Platform-Specific Instructions
+---
 
-Kali Linux
+🎨 Features Overview
 
-```bash
-sudo apt update
-sudo apt install python3 python3-pip -y
-python3 install.py
-```
+🔍 Core Intelligence Modules
 
-Termux (Android)
+Module Capability Targets
+📞 Phone Intelligence Carrier, Location, Timezone, Validation Phone Numbers
+👤 Social OSINT Facebook, Telegram, LinkedIn Profiles Social Media
+🕵️ Truecaller Engine Multi-source Reverse Lookup Identity
+🚫 Spam Analysis 20+ Spam Databases Threat Intelligence
+📧 Email Forensics Breach Detection, HIBP Integration Email Security
+🌐 Domain Intelligence WHOIS, Registration Data Domains
+🎯 Smart Dorking Automated Search Query Generation Web Intelligence
 
-```bash
-pkg update && pkg install python -y
-python install.py
-```
+🚀 Advanced Capabilities
 
-Windows
+· ⚡ Real-time Intelligence: Live data from multiple sources
+· 📊 Batch Processing: Mass target analysis
+· 🔗 API Integration: Extensible plugin architecture
+· 💾 Report Generation: Professional intelligence reports
+· 🛡 Rate Limiting: Stealth mode operations
+· 🌍 Cross-Platform: Universal compatibility
 
-```bash
-# Ensure Python 3.6+ is installed from python.org
-python install.py
-```
+---
 
-macOS
+🎯 Usage Examples
 
-```bash
-# Ensure Python 3.6+ is installed
-python3 install.py
-```
-
-📖 Usage Examples
-
-Basic Phone Number Investigation
+Basic Reconnaissance
 
 ```bash
 python main.py +919876543210
 ```
 
-Comprehensive OSINT Analysis
+Full Spectrum Intelligence
 
 ```bash
-python main.py +919876543210 --all --save --verbose
+python main.py +919876543210 --full-scan --stealth --report
 ```
 
-Email Security Check
+Email Threat Assessment
 
 ```bash
-python main.py target@example.com --email
+python main.py ceo@company.com --email --full-scan
 ```
 
-Domain Intelligence
+Domain Intelligence Gathering
 
 ```bash
-python main.py example.com --domain
+python main.py target-company.com --domain --deep-scan
 ```
 
-Quick Scan (Quiet Mode)
+Batch Operations
 
 ```bash
-python main.py +919876543210 --quiet
+python main.py --batch targets.txt --output-dir /reports/
 ```
 
-⚙️ Configuration
+---
 
-API Keys Setup (Optional)
+⚙️ Advanced Configuration
 
-Edit config.json to enhance functionality:
+API Integration Setup
 
 ```json
 {
-    "apis": {
-        "numverify": "YOUR_NUMVERIFY_API_KEY",
-        "abstractapi": "YOUR_ABSTRACTAPI_KEY", 
-        "hibp": "YOUR_HIBP_API_KEY"
-    },
-    "settings": {
-        "rate_limit_delay": 1,
-        "timeout": 10,
-        "save_reports": false
-    }
+  "intelligence": {
+    "numverify": "YOUR_API_KEY",
+    "abstractapi": "YOUR_API_KEY", 
+    "hibp": "YOUR_API_KEY",
+    "shodan": "YOUR_API_KEY"
+  },
+  "operations": {
+    "stealth_mode": true,
+    "rate_limit": 2,
+    "timeout": 15,
+    "max_retries": 3
+  },
+  "reporting": {
+    "auto_save": true,
+    "format": "json",
+    "encryption": true
+  }
 }
 ```
 
-Getting API Keys (Optional)
+---
 
-1. NumVerify: https://numverify.com (Free tier available)
-2. AbstractAPI: https://abstractapi.com (Free tier available)
-3. Have I Been Pwned: https://haveibeenpwned.com/API/Key
-
-🎯 Command Line Options
-
-Option Description Example
-target Phone number, email, or domain +919876543210
---all Run all available checks --all
---save Save results to files --save
---verbose Enable detailed output --verbose
---quiet Minimal output --quiet
---email Target is email address --email
---domain Target is domain --domain
---config Custom config file --config myconfig.json
-
-📊 Sample Output
-
-Phone Number Analysis
+📊 Sample Intelligence Report
 
 ```
-📞 BASIC INFORMATION:
-  ✅ Number: +91 98765 43210 (India)
-  ✅ Carrier: Airtel
-  ✅ Timezone: Asia/Kolkata
-  ✅ Type: Mobile
-  ✅ Valid: Yes
+🕵️‍♂️ NUMINTENSE PRO - INTELLIGENCE REPORT
+═══════════════════════════════════════
+🎯 TARGET: +91 98765 43210
+📅 TIMESTAMP: 2024-01-15 14:30:22 UTC
+🔢 CASE ID: NIP-2024-015-8873
 
-🔍 OSINT RESULTS:
-  ✅ Facebook: 5 search variations generated
-  ✅ Telegram: 12 username variations checked
-  ✅ Spam: 15 databases queried
-  ✅ Truecaller: 8 lookup sources scanned
+📞 BASIC INTELLIGENCE
+├── 📱 Number: +91 98765 43210 (Verified)
+├── 🌍 Country: India (IN)
+├── 🏢 Carrier: Airtel India
+├── 🕐 Timezone: Asia/Kolkata
+└── 🔧 Type: Mobile (GSM)
+
+🔍 SOCIAL INTELLIGENCE
+├── 📘 Facebook: 8 profiles identified
+├── 📱 Telegram: 12 username variations
+├── 💼 LinkedIn: 3 professional profiles
+└── 🐦 Twitter: 2 potential accounts
+
+🛡 THREAT ASSESSMENT
+├── 🚫 Spam Score: 2/100 (Clean)
+├── ⚠️ Breaches: 0 detected
+├── 🔒 Privacy: Medium exposure
+└── 🎯 Risk Level: LOW
+
+📊 DIGITAL FOOTPRINT
+├── 🌐 Web Presence: 15+ mentions
+├── 📧 Associated Emails: 3 found
+├── 🔗 Social Links: 8 platforms
+└── 📍 Geolocation: Mumbai, IN
+
+🎯 RECOMMENDATIONS
+├── 🔒 Enable 2FA on all accounts
+├── 🛡 Monitor for data breaches
+├── 🔍 Regular privacy audits
+└── 📱 Secure mobile communications
 ```
 
-Email Security Report
+---
 
-```
-📧 EMAIL BREACH REPORT: user@example.com
-  ✅ HIBP: No breaches found
-  ⚠️ Recommendations: Enable 2FA, use password manager
-```
-
-Domain Intelligence
-
-```
-🌐 WHOIS REPORT: example.com
-  ✅ Registrar: GoDaddy
-  ✅ Created: 2020-01-01
-  ✅ Expires: 2024-01-01
-  ✅ Status: Active
-```
-
-🏗 Project Structure
+🏗 Architecture
 
 ```
 numintense_pro/
-├── main.py                 # Main application
-├── install.py             # Installation script
-├── requirements.txt       # Dependencies
-├── config.json           # Configuration
-├── modules/              # Core modules
-│   ├── email_breach_check.py
-│   ├── facebook_check.py
-│   ├── generate_dorks.py
-│   ├── spam_check.py
-│   ├── telegram_lookup.py
-│   ├── truecaller_lookup.py
-│   └── whois_lookup.py
-└── apis/                 # API integrations
-    ├── numverify.py
-    └── abstractapi.py
+├── 🎯 main.py                 # Command Center
+├── ⚡ install.py              # Deployment System
+├── 📋 requirements.txt       # Dependencies
+├── ⚙️ config.json            # Operations Config
+├── 🛠 modules/               # Intelligence Modules
+│   ├── 🔍 phone_intel.py
+│   ├── 👤 social_recon.py
+│   ├── 🕵️ truecaller_engine.py
+│   ├── 🚫 spam_analyzer.py
+│   ├── 📧 email_forensics.py
+│   ├── 🌐 domain_intel.py
+│   └── 🎯 dork_generator.py
+├── 🔌 apis/                  # Service Integrations
+│   ├── numverify.py
+│   ├── abstractapi.py
+│   └── shodan.py
+├── 📊 reports/               # Intelligence Output
+└── 🗃 data/                  # Operations Cache
 ```
 
-🔧 Modules Overview
+---
 
-Core Intelligence Modules
+🛡 Enterprise Features
 
-· Phone Intelligence: Basic number analysis and validation
-· Facebook OSINT: Social media investigation with advanced dorks
-· Telegram Lookup: Smart username generation and profile discovery
-· Truecaller Integration: Multi-source reverse phone lookup
-· Spam Detection: 15+ spam database checks
-· Email Security: HIBP breach checking
-· Domain Intelligence: WHOIS registration data
-· Dork Generation: Automated search query creation
-
-API Integrations
-
-· NumVerify: Phone number validation API
-· AbstractAPI: Additional phone intelligence services
-· Have I Been Pwned: Email breach database
-
-🛡 Legal & Ethical Usage
-
-✅ Permitted Uses
-
-· Security research and penetration testing
-· Digital forensics and investigations
-· Personal security awareness
-· Educational purposes
-· Authorized red team operations
-· Bug bounty hunting
-
-❌ Prohibited Uses
-
-· Harassment or stalking
-· Unauthorized surveillance
-· Commercial spam operations
-· Illegal activities
-· Violating terms of service
-· Impersonation or fraud
-
-⚠️ Important Disclaimer
-
-This tool is designed for authorized security testing and educational purposes only. Users are solely responsible for complying with applicable laws and regulations. Always obtain proper authorization before conducting any investigations. The developers are not responsible for any misuse of this tool.
-
-🐛 Troubleshooting
-
-Common Issues & Solutions
-
-1. Module Import Errors
-   ```bash
-   # Reinstall dependencies
-   pip install --force-reinstall -r requirements.txt
-   ```
-2. Python Version Issues
-   ```bash
-   # Check Python version
-   python --version
-   # Requires Python 3.6 or higher
-   ```
-3. Network Connectivity
-   ```bash
-   # Test basic connectivity
-   python -c "import requests; print(requests.get('https://google.com').status_code)"
-   ```
-4. Permission Issues (Linux/macOS)
-   ```bash
-   # Use virtual environment
-   python -m venv numintense_env
-   source numintense_env/bin/activate
-   pip install -r requirements.txt
-   ```
-
-Debug Mode
+🔒 Stealth Mode
 
 ```bash
-python main.py +1234567890 --verbose
+python main.py +1234567890 --stealth --proxy socks5://127.0.0.1:9050
 ```
 
-🔄 Updates & Maintenance
-
-Checking for Updates
+📈 Batch Operations
 
 ```bash
-# If using git
-git pull origin main
-python install.py
-
-# Otherwise, re-download latest files and run:
-python install.py
+python main.py --batch targets.txt --threads 5 --delay 3
 ```
 
-Adding Custom Modules
-
-1. Create new module in modules/ directory
-2. Follow existing module structure
-3. Import in main.py
-4. Add to appropriate function calls
-
-🤝 Contributing
-
-We welcome contributions from the security community! Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-4. Follow the existing code style
-5. Include updated documentation
-6. Test your changes thoroughly
-
-Development Setup
+🔐 Encrypted Reports
 
 ```bash
-git clone <repository-url>
-cd numintense_pro
-python install.py
+python main.py +1234567890 --encrypt --password "secure123"
+```
+
+🌐 API Server Mode
+
+```bash
+python main.py --server --port 8080 --api-key "your-secret-key"
+```
+
+---
+
+🎯 Command Reference
+
+Basic Operations
+
+Command Description
+python main.py +1234567890 Basic phone intelligence
+python main.py target@domain.com --email Email forensics
+python main.py domain.com --domain Domain intelligence
+
+Advanced Operations
+
+Command Description
+--full-scan Comprehensive intelligence gathering
+--stealth Enable stealth mode operations
+--batch file.txt Process multiple targets
+--report Generate professional report
+--encrypt Encrypt output files
+--api-mode Enable API integration
+--output-dir /path/ Custom output directory
+
+---
+
+🚨 Legal & Compliance
+
+✅ Authorized Usage
+
+· 🛡 Security Research & Penetration Testing
+· 🔍 Digital Forensics & Incident Response
+· 📊 Threat Intelligence Gathering
+· 🎯 Red Team Operations
+· 📚 Educational & Training Purposes
+
+❌ Strictly Prohibited
+
+· 🚫 Unauthorized Surveillance
+· 🚫 Harassment & Stalking
+· 🚫 Illegal Activities
+· 🚫 Terms of Service Violations
+· 🚫 Commercial Exploitation
+
+⚠️ Compliance Notice
+
+NumIntense Pro is designed for authorized security testing only. Users must comply with all applicable laws and obtain proper authorization before conducting any investigations. The developers assume no liability for misuse.
+
+---
+
+🔧 Technical Specifications
+
+System Requirements
+
+· Python: 3.6 or higher
+· RAM: 512MB minimum
+· Storage: 100MB free space
+· Network: Internet connection required
+
+Supported Platforms
+
+· 🐧 Kali Linux & Penetration Distros
+· 📱 Termux (Android)
+· 🖥 Windows 10/11
+· 🍎 macOS 10.14+
+· 🐳 Docker Containers
+
+Dependencies
+
+```txt
+Core: phonenumbers, requests, colorama
+Intelligence: whois, beautifulsoup4, lxml
+Security: cryptography, urllib3
+Advanced: python-dateutil, pytz
+```
+
+---
+
+🆘 Support & Troubleshooting
+
+Quick Diagnostics
+
+```bash
+# System check
+python main.py --diagnostic
+
+# Version info
+python main.py --version
+
+# Help system
 python main.py --help
 ```
 
-📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-🙏 Acknowledgments
-
-· Google for libphonenumber library
-· Have I Been Pwned for breach data services
-· NumVerify for phone validation API
-· AbstractAPI for additional intelligence services
-· Open Source Community for continuous improvements and feedback
-
-📞 Support & Resources
-
-Documentation
-
-· In-line code documentation and comments
-· Example configurations in config.json
-· Comprehensive help via --help flag
-
-Issue Reporting
-
-When reporting issues, please include:
-
-1. Your operating system and Python version
-2. Exact command used
-3. Full error message/output
-4. Steps to reproduce the issue
-
-Community Guidelines
-
-· Be respectful and professional
-· Share knowledge and techniques
-· Report vulnerabilities responsibly
-· Help improve tool detection and prevention
-
----
-
-🎯 Quick Start Cheat Sheet
+Common Issues
 
 ```bash
-# Installation
-python install.py
+# Dependency issues
+pip install --upgrade -r requirements.txt
 
-# Basic usage
-python main.py +1234567890
+# Permission problems (Linux)
+sudo python install.py
 
-# Full investigation
-python main.py +1234567890 --all --save
-
-# Email check
-python main.py admin@company.com --email
-
-# Domain check  
-python main.py target.com --domain
-
-# Quiet mode for quick scans
-python main.py +1234567890 --quiet
+# Network configuration
+python main.py +1234567890 --proxy http://proxy:port
 ```
+
+Community Support
+
+· 📖 Documentation: [GitHub Wiki]
+· 🐛 Bug Reports: [GitHub Issues]
+· 💬 Discussions: [Community Forum]
+· 🔄 Updates: python main.py --update
 
 ---
 
-NumIntense Pro - Your comprehensive digital investigation companion.
+🎖️ Professional Use Cases
 
-Remember: With great power comes great responsibility. Always respect privacy, follow laws, and use this tool ethically. 🔍
+Corporate Security
 
-Stay curious, stay ethical, stay secure.
+· Employee background verification
+· Threat intelligence gathering
+· Incident response support
+· Digital footprint analysis
+
+Law Enforcement
+
+· Digital evidence collection
+· Suspect profiling
+· Intelligence operations
+· Forensic investigations
+
+Security Research
+
+· Vulnerability assessment
+· Attack surface mapping
+· Threat modeling
+· Security auditing
+
+---
+
+<div align="center">
+
+🚀 Ready to Deploy?
+
+```bash
+# Start your intelligence operation now
+python main.py +1234567890 --full-scan --report
+```
+
+NumIntense Pro - When Every Byte of Intelligence Matters 🔍
+
+"The right information at the right time changes everything."
+
+</div>
+
+---
+
+📞 Contact & Resources
+
+· Website: https://your-domain.com
+· Documentation: [GitHub Wiki]
+· Security: security@your-domain.com
+· Training: training@your-domain.com
+
+---
+
+<div align="center">
+
+© 2024 NumIntense Pro | Advanced OSINT Intelligence Platform
+
+Built for professionals, by professionals 🛡️
+
+</div>
