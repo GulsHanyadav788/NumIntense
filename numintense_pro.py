@@ -175,7 +175,7 @@ def banner():
  ╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚══════╝╚══════╝
     """)
     print(Fore.CYAN + "NumIntense Pro - Advanced Phone Number OSINT Framework")
-    print(Fore.CYAN + f"Version 2.0 | {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(Fore.CYAN + f"Version 2.0 | by GulsHan kumar {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(Fore.CYAN + "=" * 60)
 
 def main():
