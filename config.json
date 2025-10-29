@@ -1,12 +1,178 @@
 {
-    "apis": {
-        "numverify": "YOUR_NUMVERIFY_API_KEY_HERE",
-        "abstractapi": "YOUR_ABSTRACTAPI_KEY_HERE",
-        "hibp": "YOUR_HIBP_API_KEY_HERE"
+    "_metadata": {
+        "config_version": "3.0.0",
+        "created": "2024-01-15T00:00:00Z",
+        "last_modified": "2024-01-15T00:00:00Z",
+        "description": "NumIntense Pro Enterprise Configuration - Ultimate OSINT Intelligence Suite"
     },
-    "settings": {
-        "rate_limit_delay": 1,
-        "timeout": 10,
-        "save_reports": false
+    
+    "api_configuration": {
+        "numverify": {
+            "api_key": "YOUR_NUMVERIFY_API_KEY_HERE",
+            "enabled": true,
+            "endpoint": "http://apilayer.net/api/validate",
+            "rate_limit": 1000,
+            "priority": 1
+        },
+        "abstractapi": {
+            "api_key": "YOUR_ABSTRACTAPI_KEY_HERE",
+            "enabled": true,
+            "endpoint": "https://phonevalidation.abstractapi.com/v1/",
+            "rate_limit": 1000,
+            "priority": 2
+        },
+        "hibp": {
+            "api_key": "YOUR_HIBP_API_KEY_HERE",
+            "enabled": true,
+            "endpoint": "https://haveibeenpwned.com/api/v3/",
+            "rate_limit": 1500,
+            "priority": 1
+        },
+        "shodan": {
+            "api_key": "YOUR_SHODAN_API_KEY_HERE",
+            "enabled": false,
+            "endpoint": "https://api.shodan.io/",
+            "rate_limit": 1000000,
+            "priority": 3
+        },
+        "virustotal": {
+            "api_key": "YOUR_VIRUSTOTAL_API_KEY_HERE",
+            "enabled": false,
+            "endpoint": "https://www.virustotal.com/vtapi/v2/",
+            "rate_limit": 500,
+            "priority": 3
+        }
+    },
+
+    "operation_settings": {
+        "performance": {
+            "rate_limit_delay": 1.5,
+            "request_timeout": 15,
+            "max_retries": 3,
+            "retry_delay": 2,
+            "concurrent_requests": 2
+        },
+        "stealth": {
+            "stealth_mode": false,
+            "random_delays": true,
+            "user_agent_rotation": true,
+            "proxy_enabled": false,
+            "proxy_url": "http://proxy:port"
+        },
+        "caching": {
+            "enable_caching": true,
+            "cache_duration": 3600,
+            "cache_directory": "./data/cache"
+        }
+    },
+
+    "intelligence_modules": {
+        "phone_intelligence": {
+            "enabled": true,
+            "depth": "standard",
+            "validate_numbers": true,
+            "carrier_lookup": true,
+            "timezone_detection": true
+        },
+        "social_osint": {
+            "enabled": true,
+            "platforms": ["facebook", "telegram", "linkedin", "twitter", "instagram"],
+            "max_results": 10,
+            "deep_search": false
+        },
+        "email_forensics": {
+            "enabled": true,
+            "breach_check": true,
+            "domain_analysis": true,
+            "social_lookup": true
+        },
+        "domain_intelligence": {
+            "enabled": true,
+            "whois_lookup": true,
+            "dns_records": false,
+            "subdomain_scan": false
+        },
+        "threat_analysis": {
+            "enabled": true,
+            "spam_detection": true,
+            "reputation_check": true,
+            "risk_assessment": true
+        }
+    },
+
+    "reporting_output": {
+        "auto_save": false,
+        "output_format": "text",
+        "output_directory": "./reports",
+        "encryption": {
+            "enabled": false,
+            "algorithm": "AES256",
+            "password": "YOUR_ENCRYPTION_PASSWORD_HERE"
+        },
+        "formats": {
+            "text": true,
+            "json": false,
+            "html": false,
+            "pdf": false
+        },
+        "content": {
+            "include_raw_data": false,
+            "include_timestamps": true,
+            "include_recommendations": true,
+            "risk_scoring": true
+        }
+    },
+
+    "security_compliance": {
+        "data_retention": {
+            "enabled": true,
+            "max_days": 30,
+            "auto_cleanup": true
+        },
+        "privacy": {
+            "anonymize_reports": false,
+            "mask_sensitive_data": true,
+            "compliance_mode": "standard"
+        },
+        "logging": {
+            "enable_logging": true,
+            "log_level": "INFO",
+            "log_directory": "./logs",
+            "max_log_size": "10MB"
+        }
+    },
+
+    "user_interface": {
+        "display": {
+            "color_scheme": "professional",
+            "show_banner": true,
+            "show_progress": true,
+            "verbose_output": false
+        },
+        "notifications": {
+            "enable_sounds": false,
+            "desktop_notifications": false
+        }
+    },
+
+    "_documentation": {
+        "api_keys_guide": {
+            "numverify": "Get free API key from: https://numverify.com (1000 requests/month)",
+            "abstractapi": "Get free API key from: https://abstractapi.com (100 requests/month)",
+            "hibp": "Get API key from: https://haveibeenpwned.com/API/Key",
+            "shodan": "Get API key from: https://account.shodan.io (Freemium available)",
+            "virustotal": "Get API key from: https://www.virustotal.com/gui/join-us"
+        },
+        "configuration_tips": {
+            "performance": "Increase rate_limit_delay if experiencing API rate limits",
+            "stealth": "Enable stealth_mode for sensitive operations",
+            "reporting": "Set auto_save to true for automatic report generation",
+            "security": "Enable encryption for sensitive investigation reports"
+        },
+        "quick_start": {
+            "basic_setup": "Only numverify and abstractapi API keys required for core features",
+            "advanced_setup": "Add hibp for email breach detection and shodan for network intelligence",
+            "enterprise_setup": "Enable all APIs and advanced features for comprehensive intelligence"
+        }
     }
 }
