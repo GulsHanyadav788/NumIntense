@@ -110,7 +110,7 @@ Our R&D team continuously works on:
 📞 Connect With Us
 
 ```
-🌐 Website: https://numintense.pro
+🌐 Website: https://gulshankumar799.github.io/
 📧 Security: security@numintense.pro
 🎓 Training: training@numintense.pro
 🐙 GitHub: github.com/numintense-pro
