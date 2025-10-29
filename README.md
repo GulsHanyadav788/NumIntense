@@ -141,7 +141,7 @@ curl -s https://raw.githubusercontent.com/GulsHanyadav788/numintense_pro/main/in
 🛠 Manual Installation
 
 ```bash
-git clone https://github.com/your-repo/numintense_pro.git
+git clone https://github.com/GulsHanyadav788/numintense_pro.git
 cd numintense_pro
 python install.py
 ```
