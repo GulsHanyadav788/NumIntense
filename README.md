@@ -135,7 +135,7 @@ We're committed to advancing the field of digital intelligence through:
 
 ```bash
 # Automated installation (Recommended)
-curl -s https://raw.githubusercontent.com/your-repo/numintense_pro/main/install.py | python3
+curl -s https://raw.githubusercontent.com/GulsHanyadav788/numintense_pro/main/install.py | python3
 ```
 
 🛠 Manual Installation
