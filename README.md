@@ -18,117 +18,6 @@ NumIntense Pro is a cutting-edge OSINT (Open Source Intelligence) framework desi
 
 ---
 
-👥 About Us
-
-🏢 The Team Behind NumIntense Pro
-
-<div align="center">
-
-"Transforming Digital Intelligence Through Innovation"
-
-</div>
-
-🎯 Our Mission
-
-At NumIntense Pro, we believe in empowering security professionals with cutting-edge tools that transform complex digital investigations into streamlined, efficient processes. Our mission is to bridge the gap between advanced OSINT capabilities and practical, real-world security operations.
-
-🌟 Our Story
-
-Founded by a team of seasoned cybersecurity experts and digital forensics specialists, NumIntense Pro emerged from years of hands-on experience in:
-
-· 🛡️ Corporate Security - Protecting Fortune 500 companies
-· 🔍 Law Enforcement - Supporting digital investigations
-· 🎯 Red Team Operations - Advanced penetration testing
-· 📊 Threat Intelligence - Global cyber threat monitoring
-
-🏆 Core Team
-
-GulsHan Kumar - Founder & Lead Developer
-
-· 8+ years in cybersecurity and OSINT operations
-· Former security consultant for government agencies
-· Specialized in digital forensics and threat intelligence
-· Creator of multiple open-source security tools
-
-Security Research Division
-
-· Dr. Alex Chen - PhD in Cybersecurity, Machine Learning specialist
-· Maria Rodriguez - Digital Forensics Expert, Certified Ethical Hacker
-· James Wilson - Network Security Architect, OSCP Certified
-· Sarah Johnson - Threat Intelligence Analyst, OSINT Researcher
-
-🎓 Our Expertise
-
-· Digital Forensics & Incident Response
-· Advanced OSINT Techniques
-· Threat Intelligence Gathering
-· Security Tool Development
-· Training & Knowledge Transfer
-
-🌍 Global Impact
-
-We've trained 5,000+ security professionals across 45+ countries and our tools are used by:
-
-· 🏛️ Government Agencies
-· 🏢 Fortune 500 Companies
-· 🎓 Educational Institutions
-· 🔒 Security Consultancies
-· 👮 Law Enforcement Units
-
-📚 Commitment to Education
-
-We believe in giving back to the security community through:
-
-· Free Training Materials - Comprehensive OSINT guides
-· Open Source Tools - Community-driven development
-· Security Research - Publishing cutting-edge findings
-· Mentorship Programs - Nurturing next-gen security experts
-
-🔬 Research & Development
-
-Our R&D team continuously works on:
-
-· AI-Powered Intelligence - Machine learning for pattern recognition
-· Blockchain Forensics - Cryptocurrency investigation tools
-· Mobile Security - Advanced mobile device analysis
-· Cloud Intelligence - Multi-cloud reconnaissance techniques
-
-🤝 Community Engagement
-
-· Monthly Webinars - Free training sessions
-· Bug Bounty Programs - Rewarding security researchers
-· Open Source Contributions - Supporting the security ecosystem
-· Conference Speaking - Sharing knowledge globally
-
-🏅 Awards & Recognition
-
-· 🥇 Black Hat Arsenal 2023 - Tool Demonstration
-· 🥈 DEF CON - Open Source Tool Competition
-· 🏆 Cybersecurity Excellence Awards - Best OSINT Tool
-· 📜 MIT Licensed - Trusted by enterprises worldwide
-
-📞 Connect With Us
-
-```
-🌐 Website: https://gulshankumar799.github.io/
-📧 Security: security@numintense.pro
-🎓 Training: training@numintense.pro
-🐙 GitHub: github.com/numintense-pro
-🐦 Twitter: @NumIntensePro
-💼 LinkedIn: NumIntense Pro
-```
-
-🎯 Our Vision for the Future
-
-We're committed to advancing the field of digital intelligence through:
-
-· Quantum-Resistant Cryptography integration
-· AI-Driven Threat Prediction systems
-· Global Threat Intelligence Sharing networks
-· Accessible Security Education for all
-
----
-
 ⚡ Quick Start
 
 🎯 One-Command Installation
@@ -283,31 +172,6 @@ API Integration Setup
 
 ---
 
-🏗 Architecture
-
-```
-numintense_pro/
-├── 🎯 main.py                 # Command Center
-├── ⚡ install.py              # Deployment System
-├── 📋 requirements.txt       # Dependencies
-├── ⚙️ config.json            # Operations Config
-├── 🛠 modules/               # Intelligence Modules
-│   ├── 🔍 phone_intel.py
-│   ├── 👤 social_recon.py
-│   ├── 🕵️ truecaller_engine.py
-│   ├── 🚫 spam_analyzer.py
-│   ├── 📧 email_forensics.py
-│   ├── 🌐 domain_intel.py
-│   └── 🎯 dork_generator.py
-├── 🔌 apis/                  # Service Integrations
-│   ├── numverify.py
-│   ├── abstractapi.py
-│   └── shodan.py
-├── 📊 reports/               # Intelligence Output
-└── 🗃 data/                  # Operations Cache
-```
-
----
 
 🛡 Enterprise Features
 
@@ -490,15 +354,6 @@ NumIntense Pro - When Every Byte of Intelligence Matters 🔍
 
 ---
 
-📞 Contact & Resources
-
-· Website: https://numintense.pro
-· Security: security@numintense.pro
-· Training: training@numintense.pro
-· GitHub: github.com/numintense-pro
-· LinkedIn: NumIntense Pro
-
----
 
 <div align="center">
 
