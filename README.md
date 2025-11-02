@@ -1,4 +1,4 @@
-🔥 NumIntense Pro - Ultimate OSINT Intelligence Suite
+🔥 NumIntense Pro - 
 
 <div >
 
