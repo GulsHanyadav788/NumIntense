@@ -1,4 +1,4 @@
-🔥 NumIntense Pro - 
+🔥 NumIntense - 
 
 <div >
 
@@ -6,9 +6,9 @@ Advanced Phone Number Intelligence & Digital Reconnaissance Platform
 
 </div>
 
-🚀 What is NumIntense Pro?
+🚀 What is NumIntense ?
 
-NumIntense Pro is a cutting-edge OSINT (Open Source Intelligence) framework designed for professional security researchers, penetration testers, and digital investigators. It provides comprehensive digital footprint analysis with military-grade intelligence gathering capabilities.
+NumIntense is a cutting-edge OSINT (Open Source Intelligence) framework designed for professional security researchers, penetration testers, and digital investigators. It provides comprehensive digital footprint analysis with military-grade intelligence gathering capabilities.
 
 ---
 
@@ -24,7 +24,7 @@ curl -s https://raw.githubusercontent.com/GulsHanyadav788/numintense_pro/main/in
 🛠 Manual Installation
 
 ```bash
-git clone https://github.com/GulsHanyadav788/numintense_pro.git
+git clone https://github.com/GulsHanyadav788/numintense.git
 cd numintense_pro
 python install.py
 ```
@@ -32,7 +32,7 @@ python install.py
 🚀 Instant Usage
 
 ```bash
-python main.py +1234567890 --full-scan
+python numintense_pro +1234567890 --full-scan
 ```
 
 ---
