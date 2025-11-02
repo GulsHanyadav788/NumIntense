@@ -1,12 +1,6 @@
 🔥 NumIntense Pro - Ultimate OSINT Intelligence Suite
 
-<div align="center">
-
-https://img.shields.io/badge/Version-3.0.0-red
-https://img.shields.io/badge/Python-3.6+-blue
-https://img.shields.io/badge/Platform-Kali%20|%20Termux%20|%20Windows%20|%20macOS-green
-https://img.shields.io/badge/License-MIT-yellow
-https://img.shields.io/badge/OSINT-Advanced-orange
+<div >
 
 Advanced Phone Number Intelligence & Digital Reconnaissance Platform
 
@@ -101,33 +95,7 @@ python main.py --batch targets.txt --output-dir /reports/
 
 ---
 
-⚙️ Advanced Configuration
 
-API Integration Setup
-
-```json
-{
-  "intelligence": {
-    "numverify": "YOUR_API_KEY",
-    "abstractapi": "YOUR_API_KEY", 
-    "hibp": "YOUR_API_KEY",
-    "shodan": "YOUR_API_KEY"
-  },
-  "operations": {
-    "stealth_mode": true,
-    "rate_limit": 2,
-    "timeout": 15,
-    "max_retries": 3
-  },
-  "reporting": {
-    "auto_save": true,
-    "format": "json",
-    "encryption": true
-  }
-}
-```
-
----
 
 📊 Sample Intelligence Report
 
