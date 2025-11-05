@@ -4,7 +4,7 @@ from colorama import Fore
 
 class AbstractAPI:
     def __init__(self, api_key):
-        self.api_key = https://phoneintelligence.abstractapi.com/v1?phone=14152007986
+        self.api_key = Key:efd9c38411b1492ab17c244c0305c286
         self.base_url = "https://phonevalidation.abstractapi.com/v1/"
     
     def validate_number(self, number):
