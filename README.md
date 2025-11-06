@@ -1,9 +1,8 @@
----
 
 # 🔍 NumIntense — Advanced OSINT & Phone Number Intelligence Tool
 
 **NumIntense** is a powerful **open-source Python CLI tool** designed for **OSINT (Open Source Intelligence)** and **phone number intelligence**.  
-It helps ethical hackers, cybersecurity researchers, and digital investigators to extract detailed information about phone numbers such as **country**, **carrier**, **timezone**, and much more — **without requiring any API keys**.
+It helps ethical hackers, cybersecurity researchers, and digital investigators extract detailed information about phone numbers such as **country**, **carrier**, **timezone**, and much more — **without requiring any API keys**.
 
 Works perfectly on **Termux (Android)**, **Kali Linux**, **Windows**, and **macOS**.
 
@@ -13,7 +12,7 @@ Works perfectly on **Termux (Android)**, **Kali Linux**, **Windows**, and **macO
 
 - 🌍 **Phone Number Intelligence** — Identify country, carrier, region, and timezone.  
 - 🔎 **Social OSINT** — Check if the number is linked to public social profiles (Facebook, LinkedIn, etc.).  
-- 🛡️ **Spam / Fraud Check** — Verify numbers against 20+ spam and scam databases.  
+- 🛡️ **Spam / Fraud Check** — Verify numbers against multiple spam/scam databases.  
 - 📧 **Email & Domain Lookup** — Check domain WHOIS and email breach information.  
 - 🧩 **Batch Mode** — Analyze multiple numbers at once.  
 - 🕶️ **Stealth Mode** — Runs quietly without revealing requests.  
@@ -28,7 +27,7 @@ Works perfectly on **Termux (Android)**, **Kali Linux**, **Windows**, and **macO
 - Cybersecurity Research  
 - Ethical Hacking & Penetration Testing  
 - Digital Forensics  
-- Spam / Scam detection
+- Spam / Scam Detection
 
 ---
 
@@ -40,7 +39,7 @@ Make sure Python (3.8+) is installed.
 # Clone this repository
 git clone https://github.com/GulsHanyadav788/numintense.git
 
-# Navigate to folder
+# Navigate to the folder
 cd numintense
 
 # Install dependencies
@@ -69,10 +68,11 @@ Linked Profiles: None found
 
 🧾 Requirements
 
-Python 3.8 or above
+Python >= 3.8
+phonenumbers
+requests
 
-phonenumbers, requests, and other modules (auto-installed via requirements.txt)
-
+All dependencies are automatically installed via requirements.txt.
 
 
 ---
@@ -94,11 +94,8 @@ Country-specific intelligence modules
 🧰 Tech Stack
 
 Language: Python
-
 Platforms: Termux, Kali Linux, Windows
-
 Category: OSINT, Security, Ethical Hacking, CLI Tool
-
 
 
 ---
@@ -115,6 +112,7 @@ Project Link: NumIntense Repository
 ⚖️ License
 
 This project is licensed under the MIT License — see the LICENSE file for details.
+
 
 ---
 
@@ -137,4 +135,3 @@ If you find NumIntense useful, please consider:
 
 
 ---
-
