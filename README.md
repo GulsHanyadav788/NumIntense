@@ -1,191 +1,140 @@
-NumIntense - Advanced Phone Number Intelligence Platform 🔍
+---
 
-Overview 🚀
+# 🔍 NumIntense — Advanced OSINT & Phone Number Intelligence Tool
 
-NumIntense is a professional OSINT (Open Source Intelligence) framework designed for security researchers, penetration testers, and digital investigators. It provides comprehensive digital footprint analysis with advanced intelligence gathering capabilities.
+**NumIntense** is a powerful **open-source Python CLI tool** designed for **OSINT (Open Source Intelligence)** and **phone number intelligence**.  
+It helps ethical hackers, cybersecurity researchers, and digital investigators to extract detailed information about phone numbers such as **country**, **carrier**, **timezone**, and much more — **without requiring any API keys**.
 
-Installation ⚡
-
-🔧 Automated Installation
-
-```bash
-curl -s https://raw.githubusercontent.com/GulsHanyadav788/numintense_pro/main/install.py | python3
-```
-
-🛠️ Manual Installation
-
-```bash
-git clone https://github.com/GulsHanyadav788/numintense.git
-cd numintense_pro
-python install.py
-```
-
-Quick Start 🎯
-
-```bash
-python numintense_pro.py +1234567890 --full-scan
-```
-
-Features ✨
-
-🔍 Core Intelligence Modules
-
-· 📞 Phone Intelligence: Carrier, location, timezone, validation
-· 👤 Social OSINT: Facebook, Telegram, LinkedIn profile discovery
-· 🕵️ Truecaller Engine: Multi-source reverse lookup
-· 🚫 Spam Analysis: 20+ spam databases integration
-· 📧 Email Forensics: Breach detection and HIBP integration
-· 🌐 Domain Intelligence: WHOIS and registration data
-· 🎯 Smart Dorking: Automated search query generation
-
-🚀 Advanced Capabilities
-
-· ⚡ Real-time intelligence from multiple sources
-· 📊 Batch processing for mass target analysis
-· 🔗 Extensible plugin architecture
-· 💾 Professional report generation
-· 🛡️ Stealth mode operations with rate limiting
-· 🌍 Cross-platform compatibility
-
-Usage Examples 🎯
-
-📱 Basic Phone Intelligence
-
-```bash
-python numintense_pro.py +919876543210
-```
-
-🔎 Comprehensive Analysis
-
-```bash
-python numintense_pro.py +919876543210 --full-scan --stealth --report
-```
-
-📧 Email Threat Assessment
-
-```bash
-python numintense_pro.py ceo@company.com --email --full-scan
-```
-
-🌐 Domain Intelligence
-
-```bash
-python numintense_pro.py target-company.com --domain --deep-scan
-```
-
-📁 Batch Operations
-
-```bash
-python numintense_pro.py --batch targets.txt --output-dir /reports/
-```
-
-Advanced Operations ⚙️
-
-🕶️ Stealth Mode
-
-```bash
-python numintense_pro.py +1234567890 --stealth --proxy socks5://127.0.0.1:9050
-```
-
-📈 Batch Processing
-
-```bash
-python numintense_pro.py --batch targets.txt --threads 5 --delay 3
-```
-
-🔒 Encrypted Reports
-
-```bash
-python numintense_pro.py +1234567890 --encrypt --password "secure123"
-```
-
-🌐 API Server Mode
-
-```bash
-python numintense_pro.py --server --port 8080 --api-key "your-secret-key"
-```
-
-Command Reference 📖
-
-🎯 Basic Operations
-
-· python numintense_pro.py +1234567890 - Basic phone intelligence
-· python numintense_pro.py target@domain.com --email - Email forensics
-· python numintense_pro.py domain.com --domain - Domain intelligence
-
-⚡ Advanced Flags
-
-· --full-scan - Comprehensive intelligence gathering
-· --stealth - Enable stealth mode operations
-· --batch file.txt - Process multiple targets
-· --report - Generate professional report
-· --encrypt - Encrypt output files
-· --output-dir /path/ - Custom output directory
-
-Legal & Compliance ⚖️
-
-✅ Authorized Usage
-
-· 🛡️ Security research & penetration testing
-· 🔍 Digital forensics & incident response
-· 📊 Threat intelligence gathering
-· 🎯 Red team operations
-· 📚 Educational & training purposes
-
-❌ Strictly Prohibited
-
-· 🚫 Unauthorized surveillance
-· 🚫 Harassment & stalking
-· 🚫 Illegal activities
-· 🚫 Terms of service violations
-· 🚫 Commercial exploitation
-
-Technical Requirements 🔧
-
-💻 System Requirements
-
-· Python 3.6 or higher
-· 512MB RAM minimum
-· 100MB free storage
-· Internet connection required
-
-📱 Supported Platforms
-
-· 🐧 Kali Linux & penetration distros
-· 📱 Termux (Android)
-· 🖥️ Windows 10/11
-· 🍎 macOS 10.14+
-· 🐳 Docker containers
-
-Support 🆘
-
-🔍 Diagnostics
-
-```bash
-python numintense_pro.py --diagnostic
-python numintense_pro.py --version
-python numintense_pro.py --help
-```
-
-🛠️ Common Issues
-
-```bash
-# Dependency issues
-pip install --upgrade -r requirements.txt
-
-# Network configuration
-python numintense_pro.py +1234567890 --proxy http://proxy:port
-```
-
-Professional Use Cases 🎖️
-
-· 🏢 Corporate security and employee verification
-· 👮 Law enforcement digital evidence collection
-· 🔬 Security research and vulnerability assessment
-· 🚨 Incident response and forensic investigations
+Works perfectly on **Termux (Android)**, **Kali Linux**, **Windows**, and **macOS**.
 
 ---
 
-© 2024 NumIntense Pro | Advanced OSINT Intelligence Platform
+## ⚡ Features
 
-Built for professionals, by professionals 🛡️
+- 🌍 **Phone Number Intelligence** — Identify country, carrier, region, and timezone.  
+- 🔎 **Social OSINT** — Check if the number is linked to public social profiles (Facebook, LinkedIn, etc.).  
+- 🛡️ **Spam / Fraud Check** — Verify numbers against 20+ spam and scam databases.  
+- 📧 **Email & Domain Lookup** — Check domain WHOIS and email breach information.  
+- 🧩 **Batch Mode** — Analyze multiple numbers at once.  
+- 🕶️ **Stealth Mode** — Runs quietly without revealing requests.  
+- 🧰 **No API Keys Needed** — Fully self-contained Python tool.  
+- ⚙️ **Cross-Platform** — Works on Termux, Kali Linux, and Windows.
+
+---
+
+## 🧠 Use Cases
+
+- OSINT Investigations  
+- Cybersecurity Research  
+- Ethical Hacking & Penetration Testing  
+- Digital Forensics  
+- Spam / Scam detection
+
+---
+
+## 🪶 Installation
+
+Make sure Python (3.8+) is installed.
+
+```bash
+# Clone this repository
+git clone https://github.com/GulsHanyadav788/numintense.git
+
+# Navigate to folder
+cd numintense
+
+# Install dependencies
+pip install -r requirements.txt
+
+
+---
+
+🚀 Usage
+
+Run NumIntense directly from your terminal:
+
+python numintense.py -n +919876543210
+
+Example Output:
+
+Number: +91 9876543210
+Country: India
+Carrier: Airtel
+Timezone: Asia/Kolkata
+Spam Reports: 0
+Linked Profiles: None found
+
+
+---
+
+🧾 Requirements
+
+Python 3.8 or above
+
+phonenumbers, requests, and other modules (auto-installed via requirements.txt)
+
+
+
+---
+
+💡 Future Updates
+
+GUI (Graphical Interface) version
+
+Integration with breach-checking APIs
+
+Telegram & Discord OSINT extensions
+
+Country-specific intelligence modules
+
+
+
+---
+
+🧰 Tech Stack
+
+Language: Python
+
+Platforms: Termux, Kali Linux, Windows
+
+Category: OSINT, Security, Ethical Hacking, CLI Tool
+
+
+
+---
+
+🧑‍💻 Author
+
+Guls Hanyadav
+GitHub: @GulsHanyadav788
+Project Link: NumIntense Repository
+
+
+---
+
+⚖️ License
+
+This project is licensed under the MIT License — see the LICENSE file for details.
+
+---
+
+⭐ Support the Project
+
+If you find NumIntense useful, please consider:
+
+⭐ Starring this repository
+
+🐛 Reporting bugs via Issues
+
+🧩 Contributing new modules
+
+
+
+---
+
+> 🛠️ NumIntense — Empowering open-source OSINT for everyone.
+
+
+
+---
+
