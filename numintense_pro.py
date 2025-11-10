@@ -38,8 +38,8 @@ class NumIntense:
         return f"NI-{timestamp}-{random_id}"
 
     def print_banner(self):
-    """Display professional banner"""
-    print(Fore.MAGENTA + Style.BRIGHT + """
+        """Display professional banner"""
+        print(Fore.MAGENTA + Style.BRIGHT + """
     ╔══════════════════════════════════════════════════════════════════════════════╗
     ║                                                                              ║
     ║    ███╗   ██╗██╗   ██╗███╗   ███╗██╗███╗   ██╗████████╗███████╗███╗   ██╗███████╗    ║
@@ -52,13 +52,14 @@ class NumIntense:
     ║                    🔥 ULTIMATE OSINT INTELLIGENCE SUITE                     ║
     ║                                                                              ║
     ╚══════════════════════════════════════════════════════════════════════════════╝
-    """)
-    
-    print(Fore.CYAN + Style.BRIGHT + "    " + "═" * 70)
-    print(Fore.YELLOW + f"    🚀 Version 3.1.0 | Enterprise Edition | Case ID: {self.case_id}")
-    print(Fore.GREEN + f"    📅 Session Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
-    print(Fore.CYAN + "    " + "═" * 70)
-    print()
+        """)
+        
+        print(Fore.CYAN + Style.BRIGHT + "    " + "═" * 70)
+        print(Fore.YELLOW + f"    🚀 Version 3.1.0 | Enterprise Edition | Case ID: {self.case_id}")
+        print(Fore.GREEN + f"    📅 Session Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
+        print(Fore.CYAN + "    " + "═" * 70)
+        print()
+
     def print_status(self, module, message, status="INFO"):
         status_config = {
             "SUCCESS": {"color": Fore.GREEN, "icon": "✅"},
