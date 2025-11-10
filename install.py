@@ -71,6 +71,33 @@ class NumIntenseInstaller:
             self.print_status("SYSTEM", f"{self.platform.title()} supported", "SUCCESS")
         return True
 
+    def check_file_structure(self):
+        """Check if essential files exist"""
+        self.print_status("SETUP", "Verifying file structure...", "PROCESSING")
+        
+        essential_files = [
+            "numintense_pro.py",  # ✅ CHANGED: main.py -> numintense_pro.py
+            "requirements.txt", 
+            "config.json",
+            "README.md"
+        ]
+        
+        missing_files = []
+        
+        for file in essential_files:
+            if os.path.exists(file):
+                self.print_status("FILE", f"Found: {file}", "SUCCESS")
+            else:
+                missing_files.append(file)
+                self.print_status("FILE", f"Missing: {file}", "WARNING")
+        
+        if missing_files:
+            self.print_status("SETUP", f"Missing files: {', '.join(missing_files)}", "WARNING")
+            return False
+        
+        self.print_status("SETUP", "All essential files verified", "SUCCESS")
+        return True
+
     def upgrade_pip(self):
         self.print_status("PIP", "Upgrading pip...", "PROCESSING")
         try:
@@ -133,10 +160,17 @@ class NumIntenseInstaller:
         try:
             self.print_banner()
             
+            # Run system checks
             if not self.check_python():
                 return False
                 
             self.check_platform()
+            
+            # ✅ ADDED: Check file structure
+            if not self.check_file_structure():
+                self.print_status("INSTALL", "File structure check failed", "WARNING")
+                # Continue anyway since tool might still work
+                
             self.upgrade_pip()
             
             if not self.install_requirements():
@@ -150,10 +184,11 @@ class NumIntenseInstaller:
             duration = datetime.now() - self.start_time
             print(f"\n{Fore.GREEN}✅ Installation completed in {duration.total_seconds():.1f}s")
             print(f"\n{Fore.YELLOW}🚀 Usage:")
-            print(f"{Fore.WHITE}  python numintense.py +919876543210")
-            print(f"{Fore.WHITE}  python numintense.py +919876543210 --full")
-            print(f"{Fore.WHITE}  python numintense.py admin@example.com --email")
-            print(f"{Fore.WHITE}  python numintense.py example.com --domain")
+            # ✅ CHANGED: numintense.py -> numintense_pro.py
+            print(f"{Fore.WHITE}  python numintense_pro.py +919876543210")
+            print(f"{Fore.WHITE}  python numintense_pro.py +919876543210 --full")
+            print(f"{Fore.WHITE}  python numintense_pro.py admin@example.com --email")
+            print(f"{Fore.WHITE}  python numintense_pro.py example.com --domain")
             
             return True
             
