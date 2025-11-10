@@ -1,137 +1,134 @@
+```markdown
+# 🔍 NumIntense - Advanced OSINT & Phone Intelligence Tool
 
-# 🔍 NumIntense — Advanced OSINT & Phone Number Intelligence Tool
-
-**NumIntense** is a powerful **open-source Python CLI tool** designed for **OSINT (Open Source Intelligence)** and **phone number intelligence**.  
-It helps ethical hackers, cybersecurity researchers, and digital investigators extract detailed information about phone numbers such as **country**, **carrier**, **timezone**, and much more — **without requiring any API keys**.
-
-Works perfectly on **Termux (Android)**, **Kali Linux**, **Windows**, and **macOS**.
-
----
+**NumIntense** is a powerful open-source Python CLI tool for **OSINT (Open Source Intelligence)** and **phone number intelligence**.  
+It helps ethical hackers, cybersecurity researchers, and digital investigators extract detailed information.
 
 ## ⚡ Features
 
-- 🌍 **Phone Number Intelligence** — Identify country, carrier, region, and timezone.  
-- 🔎 **Social OSINT** — Check if the number is linked to public social profiles (Facebook, LinkedIn, etc.).  
-- 🛡️ **Spam / Fraud Check** — Verify numbers against multiple spam/scam databases.  
-- 📧 **Email & Domain Lookup** — Check domain WHOIS and email breach information.  
-- 🧩 **Batch Mode** — Analyze multiple numbers at once.  
-- 🕶️ **Stealth Mode** — Runs quietly without revealing requests.  
-- 🧰 **No API Keys Needed** — Fully self-contained Python tool.  
-- ⚙️ **Cross-Platform** — Works on Termux, Kali Linux, and Windows.
+- 🌍 **Phone Number Intelligence** - Country, carrier, timezone, validation
+- 🔎 **Social Media OSINT** - Facebook, Telegram, Truecaller links
+- 🛡️ **Spam Detection** - Multiple spam database checks
+- 📧 **Email Forensics** - Breach checking and analysis
+- 🌐 **Domain Intelligence** - WHOIS lookup and domain info
+- 🎯 **Cross-Platform** - Works on Termux, Kali Linux, Windows, macOS
 
----
-
-## 🧠 Use Cases
-
-- OSINT Investigations  
-- Cybersecurity Research  
-- Ethical Hacking & Penetration Testing  
-- Digital Forensics  
-- Spam / Scam Detection
-
----
-
-## 🪶 Installation
-
-Make sure Python (3.8+) is installed.
+## 🚀 Quick Start
 
 ```bash
-# Clone this repository
-git clone https://github.com/GulsHanyadav788/numintense.git
-
-# Navigate to the folder
+# Clone repository
+git clone https://github.com/yourusername/numintense.git
 cd numintense
 
-# Install dependencies
-pip install -r requirements.txt
+# Run installer
+python install.py
 
+# Basic usage
+python numintense.py +919876543210
 
----
+# Full OSINT scan
+python numintense.py +919876543210 --full
 
-🚀 Usage
+# Email check
+python numintense.py admin@company.com --email
 
-Run NumIntense directly from your terminal:
+# Domain check  
+python numintense.py example.com --domain
+```
 
-python numintense.py -n +919876543210
+📋 Usage Examples
 
-Example Output:
+```bash
+# Basic phone intelligence
+python numintense.py +919876543210
 
-Number: +91 9876543210
-Country: India
-Carrier: Airtel
-Timezone: Asia/Kolkata
-Spam Reports: 0
-Linked Profiles: None found
+# Comprehensive investigation
+python numintense.py +919876543210 --full
 
+# Email breach check
+python numintense.py target@email.com --email
 
----
+# Domain information
+python numintense.py target.com --domain
 
-🧾 Requirements
+# Quiet mode (no banner)
+python numintense.py +919876543210 --quiet
+```
 
-Python >= 3.8
-phonenumbers
-requests
+🛠️ Requirements
 
-All dependencies are automatically installed via requirements.txt.
+· Python 3.6+
+· pip package manager
+· Internet connection
 
+📦 Dependencies
 
----
+· phonenumbers - Phone number parsing
+· requests - HTTP requests
+· colorama - Terminal colors
+· whois - Domain lookup
 
-💡 Future Updates
+🐧 Platform Support
 
-GUI (Graphical Interface) version
+· ✅ Termux (Android)
+· ✅ Kali Linux
+· ✅ Ubuntu/Debian
+· ✅ Windows 10/11
+· ✅ macOS
 
-Integration with breach-checking APIs
+⚖️ Legal Disclaimer
 
-Telegram & Discord OSINT extensions
+This tool is for authorized security research only. Users must comply with all applicable laws and regulations. Respect privacy and obtain proper authorization before use.
 
-Country-specific intelligence modules
+🐛 Reporting Issues
 
+Found a bug? Please create an issue on GitHub with:
 
+· Error message
+· Python version
+· Operating system
+· Steps to reproduce
 
----
+🤝 Contributing
 
-🧰 Tech Stack
+Contributions are welcome! Please:
 
-Language: Python
-Platforms: Termux, Kali Linux, Windows
-Category: OSINT, Security, Ethical Hacking, CLI Tool
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
 
+📄 License
 
----
-
-🧑‍💻 Author
-
-Guls Hanyadav
-GitHub: @GulsHanyadav788
-Project Link: NumIntense Repository
-
-
----
-
-⚖️ License
-
-This project is licensed under the MIT License — see the LICENSE file for details.
-
-
----
-
-⭐ Support the Project
-
-If you find NumIntense useful, please consider:
-
-⭐ Starring this repository
-
-🐛 Reporting bugs via Issues
-
-🧩 Contributing new modules
-
-
+MIT License - see LICENSE file for details.
 
 ---
 
-> 🛠️ NumIntense — Empowering open-source OSINT for everyone.
+NumIntense - Empowering open-source OSINT for everyone 🔍
 
+```
 
+**6. LICENSE FILE:**
+**Filename:** `LICENSE`
+```python
+MIT License
 
----
+Copyright (c) 2024 GulsHan Kumar
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
