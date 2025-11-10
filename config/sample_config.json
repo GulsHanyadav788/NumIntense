@@ -1,0 +1,35 @@
+{
+    "tool_info": {
+        "name": "NumIntense",
+        "version": "3.1.0",
+        "author": "GulsHan Kumar"
+    },
+    "api_configuration": {
+        "numverify": {
+            "api_key": "YOUR_NUMVERIFY_API_KEY_HERE",
+            "enabled": true,
+            "endpoint": "http://apilayer.net/api/validate"
+        },
+        "abstractapi": {
+            "api_key": "YOUR_ABSTRACTAPI_KEY_HERE", 
+            "enabled": true,
+            "endpoint": "https://phonevalidation.abstractapi.com/v1/"
+        },
+        "hibp": {
+            "api_key": "YOUR_HIBP_API_KEY_HERE",
+            "enabled": true,
+            "endpoint": "https://haveibeenpwned.com/api/v3/"
+        }
+    },
+    "operation_settings": {
+        "rate_limit_delay": 1,
+        "request_timeout": 10,
+        "save_reports": false,
+        "stealth_mode": false
+    },
+    "user_interface": {
+        "show_banner": true,
+        "color_scheme": "professional",
+        "verbose_output": false
+    }
+}
