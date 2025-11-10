@@ -1,128 +1,120 @@
-# Enhanced Email Breach Check Module
+#!/usr/bin/env python3
+"""
+Email Intelligence Module
+Description: Email breach checking and analysis
+Version: 3.1.0
+"""
+
 import requests
-import time
-import json
+import re
 from colorama import Fore, Style, init
-from typing import Dict, List, Optional
 
 init(autoreset=True)
 
-class EmailBreachChecker:
-    def __init__(self, hibp_api_key: str = None, user_agent: str = "NumIntensePro-OSINT-Tool/2.0"):
-        self.hibp_api_key = hibp_api_key
-        self.user_agent = user_agent
+class EmailIntelligence:
+    def __init__(self):
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': self.user_agent,
-            'Accept': 'application/vnd.haveibeenpwned.v3+json'
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
         })
-        
-        if self.hibp_api_key:
-            self.session.headers['hibp-api-key'] = self.hibp_api_key
-            
-        self.rate_limit_delay = 1.6
 
-    def check_hibp_breaches(self, email: str) -> Optional[Dict]:
-        try:
-            url = f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}"
-            params = {'truncateResponse': False}
-            
-            response = self.session.get(url, params=params, timeout=10)
-            
-            if response.status_code == 200:
-                breaches = response.json()
-                return {
-                    'status': 'found',
-                    'breaches': breaches,
-                    'count': len(breaches)
-                }
-            elif response.status_code == 404:
-                return {'status': 'not_found', 'breaches': [], 'count': 0}
-            elif response.status_code == 429:
-                print(Fore.RED + "[!] Rate limited - waiting before retry...")
-                time.sleep(10)
-                return self.check_hibp_breaches(email)
-            elif response.status_code == 401:
-                return {'status': 'error', 'error': 'Invalid API key'}
-            else:
-                return {'status': 'error', 'error': f"HTTP {response.status_code}"}
-                
-        except Exception as e:
-            return {'status': 'error', 'error': str(e)}
+    def validate_email(self, email):
+        """Validate email format"""
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        return re.match(pattern, email) is not None
 
-    def format_breach_info(self, breach: Dict) -> str:
-        name = breach.get('Name', 'Unknown')
-        title = breach.get('Title', name)
-        domain = breach.get('Domain', 'N/A')
-        breach_date = breach.get('BreachDate', 'Unknown')
-        added_date = breach.get('AddedDate', 'Unknown')
-        pwn_count = breach.get('PwnCount', 0)
-        data_classes = ', '.join(breach.get('DataClasses', []))
+    def check_breaches(self, email):
+        """Check email breaches"""
+        print(Fore.CYAN + f"\n[📧] Email Intelligence: {email}")
+        print(Fore.CYAN + "─" * 50)
         
-        info = f"""
-{Fore.RED}┌─ Breach: {title}
-{Fore.RED}├─ Domain: {domain}
-{Fore.RED}├─ Date: {breach_date} (Added: {added_date})
-{Fore.RED}├─ Records: {pwn_count:,}
-{Fore.RED}└─ Data Compromised: {data_classes}"""
+        # Have I Been Pwned
+        print(f"{Fore.YELLOW}[1] {Fore.WHITE}Have I Been Pwned:")
+        print(f"    {Fore.CYAN}https://haveibeenpwned.com/account/{email}")
         
-        return info
+        # Dehashed (alternative)
+        print(f"{Fore.YELLOW}[2] {Fore.WHITE}Dehashed Search:")
+        print(f"    {Fore.CYAN}https://dehashed.com/search?query={email}")
+        
+        # BreachDirectory
+        print(f"{Fore.YELLOW}[3] {Fore.WHITE}BreachDirectory:")
+        print(f"    {Fore.CYAN}https://breachdirectory.org/?q={email}")
 
-    def display_results(self, email: str, hibp_result: Dict):
-        print(Fore.CYAN + f"\n{'='*60}")
-        print(Fore.CYAN + f"📧 EMAIL BREACH REPORT: {email}")
-        print(Fore.CYAN + f"{'='*60}")
+    def social_media_search(self, email):
+        """Generate social media search links"""
+        print(f"\n{Fore.YELLOW}[🔍] Social Media Search:")
         
-        if hibp_result['status'] == 'found':
-            print(Fore.RED + f"\n[⚠️] HAVE I BEEN PWNED: {hibp_result['count']} breaches found!")
-            for i, breach in enumerate(hibp_result['breaches'], 1):
-                print(Fore.YELLOW + f"\n[{i}/{hibp_result['count']}]" + self.format_breach_info(breach))
-        elif hibp_result['status'] == 'not_found':
-            print(Fore.GREEN + "\n[✓] HAVE I BEEN PWNED: No breaches found!")
-        elif hibp_result['status'] == 'error':
-            print(Fore.RED + f"\n[❌] HAVE I BEEN PWNED ERROR: {hibp_result['error']}")
+        platforms = {
+            "Facebook": f"https://www.facebook.com/search/top/?q={email}",
+            "Instagram": f"https://www.instagram.com/search/top/?q={email}",
+            "Twitter": f"https://twitter.com/search?q={email}",
+            "LinkedIn": f"https://www.linkedin.com/search/results/all/?keywords={email}",
+            "Google": f"https://www.google.com/search?q={email}",
+        }
+        
+        for platform, url in platforms.items():
+            print(f"    {Fore.GREEN}• {platform}: {Fore.CYAN}{url}")
 
-    def email_breach_check(self, email: str) -> bool:
-        print(Fore.CYAN + f"\n[🛡️] Starting breach check for: {email}")
+    def generate_dorks(self, email):
+        """Generate Google dorks for email"""
+        print(f"\n{Fore.YELLOW}[🎯] Google Dorks:")
         
-        import re
-        if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email):
-            print(Fore.RED + "[❌] Invalid email format")
-            return False
-        
-        try:
-            hibp_result = self.check_hibp_breaches(email)
-            time.sleep(self.rate_limit_delay)
-            
-            self.display_results(email, hibp_result)
-            
-            breaches_found = hibp_result.get('count', 0) > 0
-            if breaches_found:
-                print(Fore.RED + f"\n[💀] SUMMARY: Breaches found for {email}!")
-                self.generate_recommendations()
-            else:
-                print(Fore.GREEN + f"\n[✅] SUMMARY: No breaches found for {email}")
-                
-            return breaches_found
-            
-        except Exception as e:
-            print(Fore.RED + f"[❌] Unexpected error: {str(e)}")
-            return False
-
-    def generate_recommendations(self):
-        print(Fore.YELLOW + "\n[💡] SECURITY RECOMMENDATIONS:")
-        recommendations = [
-            "Change password immediately if reused across sites",
-            "Enable two-factor authentication (2FA)",
-            "Use a password manager for unique passwords",
-            "Monitor accounts for suspicious activity",
-            "Consider using breach monitoring services"
+        dorks = [
+            f'intext:"{email}"',
+            f'site:facebook.com "{email}"',
+            f'site:twitter.com "{email}"',
+            f'site:linkedin.com "{email}"',
+            f'filetype:pdf "{email}"',
+            f'"{email}" "password"',
+            f'"{email}" "confidential"',
         ]
         
-        for i, rec in enumerate(recommendations, 1):
-            print(Fore.YELLOW + f"  {i}. {rec}")
+        for i, dork in enumerate(dorks, 1):
+            encoded = requests.utils.quote(dork)
+            url = f"https://www.google.com/search?q={encoded}"
+            print(f"    {Fore.GREEN}[{i}] {Fore.WHITE}{dork}")
+            print(f"        {Fore.CYAN}{url}")
 
-# Simplified function for basic usage
-def email_breach_check(email: str, hibp_api_key: str = None) -> bool:
-    checker = EmailBreachChecker(hibp_api_key)
-    return checker.email_breach_check(email)
+    def domain_analysis(self, email):
+        """Analyze email domain"""
+        domain = email.split('@')[-1]
+        print(f"\n{Fore.YELLOW}[🌐] Domain Analysis: {domain}")
+        
+        checks = {
+            "WHOIS Lookup": f"https://whois.domaintools.com/{domain}",
+            "Security Headers": f"https://securityheaders.com/?q={domain}",
+            "SSL Labs": f"https://www.ssllabs.com/ssltest/analyze.html?d={domain}",
+            "MX Tools": f"https://mxtoolbox.com/SuperTool.aspx?action=mx%3a{domain}",
+        }
+        
+        for check, url in checks.items():
+            print(f"    {Fore.GREEN}• {check}: {Fore.CYAN}{url}")
+
+    def full_scan(self, email):
+        """Complete email intelligence scan"""
+        if not self.validate_email(email):
+            print(Fore.RED + "[❌] Invalid email format")
+            return False
+            
+        print(Fore.CYAN + f"\n[🚀] Starting comprehensive email analysis...")
+        
+        self.check_breaches(email)
+        self.social_media_search(email)
+        self.generate_dorks(email)
+        self.domain_analysis(email)
+        
+        print(f"\n{Fore.GREEN}[✅] Email analysis completed!")
+        return True
+
+def run_email_check(email):
+    """Main function to run email check"""
+    checker = EmailIntelligence()
+    return checker.full_scan(email)
+
+# Command line usage
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1:
+        run_email_check(sys.argv[1])
+    else:
+        print(Fore.RED + "Usage: python email_check.py email@example.com")
