@@ -13,6 +13,7 @@ import platform
 import time
 from datetime import datetime
 from colorama import init, Fore, Style
+import random
 
 init(autoreset=True)
 
@@ -21,6 +22,13 @@ class NumIntenseInstaller:
         self.start_time = datetime.now()
         self.platform = platform.system().lower()
         self.python_version = f"{sys.version_info.major}.{sys.version_info.minor}"
+        self.install_id = self.generate_install_id()
+
+    def generate_install_id(self):
+        """Generate unique installation ID"""
+        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+        random_id = ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', k=6))
+        return f"INSTALL-{timestamp}-{random_id}"
 
     def print_banner(self):
         """Display professional banner"""
@@ -40,8 +48,9 @@ class NumIntenseInstaller:
         """)
         
         print(Fore.CYAN + Style.BRIGHT + "    " + "═" * 70)
-        print(Fore.YELLOW + f"    🚀 Version 3.1.0 | Enterprise Edition | Case ID: {self.case_id}")
-        print(Fore.GREEN + f"    📅 Session Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}")
+        print(Fore.YELLOW + f"    🚀 Version 3.1.0 | Enterprise Edition | Install ID: {self.install_id}")
+        print(Fore.GREEN + f"    📅 Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(Fore.GREEN + f"    🖥️  Platform: {self.platform.title()} | Python: {self.python_version}")
         print(Fore.CYAN + "    " + "═" * 70)
         print()
 
@@ -78,7 +87,7 @@ class NumIntenseInstaller:
         self.print_status("SETUP", "Verifying file structure...", "PROCESSING")
         
         essential_files = [
-            "numintense_pro.py",  # ✅ CHANGED: main.py -> numintense_pro.py
+            "numintense_pro.py",
             "requirements.txt", 
             "config.json",
             "README.md"
@@ -168,7 +177,7 @@ class NumIntenseInstaller:
                 
             self.check_platform()
             
-            # ✅ ADDED: Check file structure
+            # Check file structure
             if not self.check_file_structure():
                 self.print_status("INSTALL", "File structure check failed", "WARNING")
                 # Continue anyway since tool might still work
@@ -186,11 +195,13 @@ class NumIntenseInstaller:
             duration = datetime.now() - self.start_time
             print(f"\n{Fore.GREEN}✅ Installation completed in {duration.total_seconds():.1f}s")
             print(f"\n{Fore.YELLOW}🚀 Usage:")
-            # ✅ CHANGED: numintense.py -> numintense_pro.py
             print(f"{Fore.WHITE}  python numintense_pro.py +919876543210")
             print(f"{Fore.WHITE}  python numintense_pro.py +919876543210 --full")
             print(f"{Fore.WHITE}  python numintense_pro.py admin@example.com --email")
             print(f"{Fore.WHITE}  python numintense_pro.py example.com --domain")
+            
+            print(f"\n{Fore.CYAN}💡 Quick Test:")
+            print(f"{Fore.WHITE}  python numintense_pro.py +919876543210 --quiet")
             
             return True
             
@@ -210,4 +221,5 @@ if __name__ == "__main__":
         print(f"{Fore.YELLOW}1. Check internet connection")
         print(f"{Fore.YELLOW}2. Try: pip install --upgrade pip")
         print(f"{Fore.YELLOW}3. Run as admin/sudo if needed")
+        print(f"{Fore.YELLOW}4. Check if requirements.txt exists")
         sys.exit(1)
