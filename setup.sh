@@ -21,8 +21,8 @@ if [ $? -eq 0 ]; then
     echo "🎉 Installation completed successfully!"
     echo ""
     echo "Quick start:"
-    echo "  python3 numintense.py +919876543210"
-    echo "  python3 numintense.py +919876543210 --full"
+    echo "  python3 numintense_pro.py +919876543210"        # ✅ CHANGED
+    echo "  python3 numintense_pro.py +919876543210 --full" # ✅ CHANGED
     echo ""
 else
     echo ""
