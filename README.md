@@ -1,266 +1,186 @@
-```markdown
-<p align="center">
-  <img src="https://via.placeholder.com/800x200/1a1a2e/ffffff?text=🔍+NumIntense+OSINT+Tool" alt="NumIntense Banner" width="800">
-</p>
+# 🔍 NumIntense - Advanced OSINT & Phone Intelligence Tool
 
-<h1 align="center">🔍 NumIntense - Advanced OSINT & Phone Intelligence</h1>
+**NumIntense** is a powerful open-source Python CLI tool for **OSINT (Open Source Intelligence)** and **phone number intelligence**.  
+Developed by **GulsHan Yadav**, it helps ethical hackers, cybersecurity researchers, and digital investigators extract detailed information about phone numbers, emails, and domains.
 
-<p align="center">
-  <strong>Powerful Python CLI for Digital Investigations & Cybersecurity</strong>
-</p>
+## ⚡ Features
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.6+-blue?style=for-the-badge&logo=python" alt="Python">
-  <img src="https://img.shields.io/badge/Platform-Termux%20|%20Kali%20|%20Windows-success?style=for-the-badge" alt="Platform">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
-</p>
+- 🌍 **Phone Number Intelligence** - Country, carrier, timezone, validation
+- 🔎 **Social Media OSINT** - Facebook, Telegram, Instagram, LinkedIn lookup
+- 🛡️ **Spam Detection** - Multiple spam database checks
+- 📧 **Email Forensics** - Breach checking and analysis
+- 🌐 **Domain Intelligence** - WHOIS lookup and domain information
+- 🎯 **Advanced Dorking** - Google dork generation for deep research
+- 📊 **Comprehensive Reports** - Professional investigation summaries
+- 🖥️ **Cross-Platform** - Works on Termux, Kali Linux, Windows, macOS
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x300/0d1117/00ff88?text=Advanced+OSINT+Tool" alt="Tool Preview" width="600">
-</p>
+## 🚀 Quick Start
 
-## 🚀 Quick Overview
+### Prerequisites
+- Python 3.6 or higher
+- pip package manager
+- Internet connection
 
-**NumIntense** is a comprehensive open-source intelligence tool designed for ethical hackers, cybersecurity researchers, and digital investigators. Extract detailed information about phone numbers, emails, and domains with advanced OSINT capabilities.
+### Installation
 
-<p align="center">
-  <img src="https://via.placeholder.com/700x100/161b22/ffffff?text=🌍+Phone+Intel+•+🔎+Social+OSINT+•+🛡️+Spam+Detection+•+📧+Email+Forensics" alt="Features" width="700">
-</p>
-
----
-
-## ⭐ Key Features
-
-### 🔍 Core Intelligence
-<p align="center">
-  <img src="https://via.placeholder.com/400x200/0d1117/00d4ff?text=Phone+Number+Analysis" alt="Phone Analysis" width="400" align="left">
-</p>
-
-<br>
-
-- 🌍 **Phone Number Intelligence** - Carrier, country, timezone
-- ✅ **Number Validation** - Real-time verification
-- 🏢 **Carrier Detection** - Mobile/Landline identification
-- 🌐 **Global Coverage** - International number support
-
-<br clear="both">
-
-### 📊 Advanced OSINT
-<p align="center">
-  <img src="https://via.placeholder.com/400x200/0d1117/ff6b6b?text=Social+Media+Lookup" alt="Social OSINT" width="400" align="right">
-</p>
-
-<br>
-
-- 🔎 **Social Media OSINT** - Facebook, Telegram, Instagram
-- 🛡️ **Spam Detection** - Multiple database checks
-- 📧 **Email Forensics** - Breach analysis
-- 🌐 **Domain Intelligence** - WHOIS lookup
-
-<br clear="both">
-
-### 🛠️ Technical Features
-<p align="center">
-  <img src="https://via.placeholder.com/400x200/0d1117/f39c12?text=Cross+Platform+Support" alt="Platform Support" width="400" align="left">
-</p>
-
-<br>
-
-- 🎯 **Advanced Dorking** - Google dork generation
-- 📊 **Comprehensive Reports** - Professional summaries
-- 🖥️ **Cross-Platform** - Termux, Kali, Windows, macOS
-- ⚡ **Fast & Efficient** - Optimized performance
-
-<br clear="both">
-
----
-
-## 🛠️ Installation Guide
-
-### 📋 Prerequisites
+**Option 1: Automated Installation (Recommended)**
 ```bash
-# System Requirements
-✅ Python 3.6 or higher
-✅ pip package manager  
-✅ Internet connection
-✅ 100MB storage space
-```
+# Linux/Mac/Termux
+chmod +x setup.sh
+./setup.sh
 
-🎯 Quick Installation
-
-Termux (Android)
-
-```bash
-pkg update && pkg upgrade
-pkg install python git
-git clone https://github.com/GulsHanyadav788/numintense.git
-cd numintense
-python install.py
-```
-
-<p align="center">
-  <img src="https://via.placeholder.com/500x150/1a1a2e/ffffff?text=Termux+Installation+Complete" alt="Termux Install" width="500">
-</p>
-
-Kali Linux
-
-```bash
-sudo apt update && sudo apt install python3 python3-pip git
-git clone https://github.com/GulsHanyadav788/numintense.git
-cd numintense
-python3 install.py
-```
-
-Windows
-
-```cmd
-# Method 1: Using setup.bat
+# Windows
 setup.bat
-
-# Method 2: Manual installation
-git clone https://github.com/GulsHanyadav788/numintense.git
-cd numintense
-python install.py
 ```
 
----
+Option 2: Manual Installation
 
-📖 Usage Examples
+```bash
+# Clone or download the tool
+git clone https://github.com/GulsHanyadav788/numintense.git
+cd numintense
 
-🔍 Basic Phone Intelligence
+# Run installer
+python install.py
+
+# Verify installation
+python numintense_pro.py --help
+```
+
+📋 Usage Examples
+
+Basic Phone Intelligence
 
 ```bash
 python numintense_pro.py +919876543210
 ```
 
-Output Preview:
+Output: Basic carrier, country, timezone, and validation information
 
-```
-📊 BASIC INFORMATION
-────────────────────────
-📱 Number: +91 98765 43210
-🌍 Country: India (IN) 🇮🇳
-🏢 Carrier: Airtel
-🕐 Timezone: Asia/Kolkata
-✅ Validation: ✅ Valid
-🔧 Type: 📱 Mobile
-```
-
-<p align="center">
-  <img src="https://via.placeholder.com/600x200/0d1117/00ff88?text=Basic+Phone+Intelligence+Output" alt="Basic Output" width="600">
-</p>
-
-🔎 Full OSINT Scan
+Full OSINT Scan
 
 ```bash
 python numintense_pro.py +919876543210 --full
 ```
 
-Features Included:
+Output: Comprehensive intelligence including social media, spam databases, and advanced lookup
 
-· ✅ Basic phone information
-· 🔍 Social media presence
-· 🛡️ Spam database checks
-· 📊 Advanced analytics
-
-📧 Email Investigation
+Email Investigation
 
 ```bash
 python numintense_pro.py target@email.com --email
 ```
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x200/0d1117/ff6b6b?text=Email+Forensics+Report" alt="Email Report" width="600">
-</p>
+Output: Breach checks, social media presence, and domain analysis
 
-🌐 Domain Intelligence
+Domain Intelligence
 
 ```bash
 python numintense_pro.py example.com --domain
 ```
 
----
+Output: WHOIS information, registration details, and domain metadata
 
-🎯 Platform Support
+Quiet Mode (No Banner)
 
-Platform Status Notes
-<img src="https://img.icons8.com/color/48/000000/termux.png" width="20"> Termux ✅ Fully Supported Optimal for mobile investigations
-<img src="https://img.icons8.com/color/48/000000/kali-linux.png" width="20"> Kali Linux ✅ Fully Supported Perfect for penetration testing
-<img src="https://img.icons8.com/color/48/000000/ubuntu.png" width="20"> Ubuntu/Debian ✅ Fully Supported Standard Linux distributions
-<img src="https://img.icons8.com/color/48/000000/windows-10.png" width="20"> Windows ✅ Fully Supported Native CMD/PowerShell support
-<img src="https://img.icons8.com/color/48/000000/mac-os.png" width="20"> macOS ✅ Fully Supported Terminal and iTerm support
-
-<p align="center">
-  <img src="https://via.placeholder.com/600x100/0d1117/ffffff?text=✅+Cross-Platform+Compatibility+Guaranteed" alt="Platform Support" width="600">
-</p>
-
----
-
-📊 Sample Output
-
-🔍 Comprehensive Report
-
-```
-🎉 INVESTIGATION COMPLETE!
-────────────────────────
-📋 Case ID: NI-20241201-143052-ABC123
-⏱️ Duration: 3.2 seconds
-📊 Modules: Basic + OSINT + Social
-🌍 Coverage: 15+ data points
-🛡️ Confidence: 92%
+```bash
+python numintense_pro.py +919876543210 --quiet
 ```
 
-<p align="center">
-  <img src="https://via.placeholder.com/650x300/0d1117/00d4ff?text=Comprehensive+Investigation+Report+📊+📈+🔍" alt="Report Sample" width="650">
-</p>
+Output: Minimal output without banner for automated operations
 
----
+🛠️ Advanced Features
 
-🛠️ Technical Details
+Module System
 
-📦 Dependencies
+NumIntense includes specialized modules for different intelligence tasks:
 
-```python
-phonenumbers    # Advanced phone number parsing
-requests        # HTTP requests and API calls
-colorama        # Cross-platform colored output
-whois           # Domain information lookup
-```
+· Email Intelligence (modules/email_check.py)
+· Social Media OSINT (modules/social_osint.py)
+· Advanced Dorking (modules/advanced_dorks.py)
+· Secure API Integration (apis/secure_api.py)
 
-⚙️ Configuration
+Configuration
 
-Edit config.json for customization:
+Edit config.json to customize:
+
+· API keys for enhanced services
+· Rate limiting settings
+· Output preferences
+· Stealth mode options
 
 ```json
 {
-  "api_configuration": {
-    "numverify": "YOUR_API_KEY",
-    "abstractapi": "YOUR_API_KEY"
-  },
-  "operation_settings": {
-    "rate_limit_delay": 1,
-    "save_reports": true
-  }
+    "api_configuration": {
+        "numverify": "YOUR_API_KEY_HERE",
+        "abstractapi": "YOUR_API_KEY_HERE"
+    },
+    "operation_settings": {
+        "rate_limit_delay": 1,
+        "save_reports": false
+    }
 }
 ```
 
----
+🎯 Output Example
+
+```
+📊 BASIC INFORMATION
+────────────────────────
+📱 Number: +91 98765 43210
+🔢 E164: +919876543210
+🌍 Country: India (IN)
+🏢 Carrier: Airtel
+🕐 Timezone: Asia/Kolkata
+✅ Validation: ✅ Valid
+🔧 Type: 📱 Mobile
+
+🔍 SOCIAL MEDIA OSINT
+────────────────────────
+📱 Facebook: https://www.facebook.com/search/top/?q=919876543210
+📱 Telegram: https://t.me/919876543210
+📱 Truecaller: https://www.truecaller.com/search/919876543210
+
+🎉 INVESTIGATION COMPLETE!
+────────────────────────
+📋 Case ID: NI-20241201-143052-ABC123
+⏱️ Completed: 14:30:55
+📊 Modules: Basic + OSINT
+```
+
+🐧 Platform Support
+
+Platform Status Notes
+✅ Termux (Android) Fully Supported Optimal for mobile investigations
+✅ Kali Linux Fully Supported Perfect for penetration testing
+✅ Ubuntu/Debian Fully Supported Standard Linux distributions
+✅ Windows 10/11 Fully Supported Native CMD/PowerShell support
+✅ macOS Fully Supported Terminal and iTerm support
+✅ Parrot OS Fully Supported Security-focused distribution
+
+📦 Dependencies
+
+NumIntense requires these Python packages:
+
+· phonenumbers - Advanced phone number parsing
+· requests - HTTP requests and API calls
+· colorama - Cross-platform colored terminal output
+· whois - Domain information lookup
+
+All dependencies are automatically installed via requirements.txt.
 
 🔧 Troubleshooting
 
-Common Issues & Solutions
-
-<p align="center">
-  <img src="https://via.placeholder.com/600x200/0d1117/f39c12?text=Troubleshooting+Guide+🔧+🛠️+⚙️" alt="Troubleshooting" width="600">
-</p>
+Common Issues
 
 1. Python Not Found
 
 ```bash
 # Check Python installation
-python --version || python3 --version
+python --version
+python3 --version
 
-# Install Python (Ubuntu/Debian)
+# Install Python if missing (Ubuntu/Debian)
 sudo apt update && sudo apt install python3 python3-pip
 ```
 
@@ -279,98 +199,122 @@ chmod +x numintense_pro.py
 pip install -r requirements.txt --force-reinstall
 ```
 
-4. Termux Specific Issues
+4. Termux Issues
 
 ```bash
 # Update Termux packages
 pkg update && pkg upgrade
-pkg install python clang git
+
+# Install Python in Termux
+pkg install python
 ```
 
----
+Getting Help
+
+1. Check the #troubleshooting section in this README
+2. Review the installation logs in logs/ directory
+3. Ensure all dependencies are properly installed
+4. Verify internet connectivity for API calls
 
 🤝 Contributing
 
-We welcome contributions from the community!
+We welcome contributions! Here's how you can help:
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x150/1a1a2e/ffffff?text=Join+Our+Open+Source+Community+👥+🌟" alt="Contributing" width="600">
-</p>
-
-🐛 Reporting Bugs
+Reporting Bugs
 
 1. Check existing issues on GitHub
-2. Create detailed bug report with:
+2. Create a new issue with:
    · Error message and stack trace
-   · Python version and OS
+   · Python version (python --version)
+   · Operating system
    · Steps to reproduce
 
-💡 Feature Requests
+Feature Requests
 
-1. Open issue with "[FEATURE]" prefix
-2. Describe use case and expected behavior
+1. Open an issue with "[FEATURE]" prefix
+2. Describe the use case and expected behavior
 3. Provide examples if possible
 
-🏗️ Code Contributions
+Code Contributions
 
-```bash
-# Development workflow
-git clone https://github.com/GulsHanyadav788/numintense.git
-cd numintense
-git checkout -b feature/amazing-feature
-# Make your changes
-git commit -m 'Add amazing feature'
-git push origin feature/amazing-feature
+1. Fork the repository
+2. Create a feature branch (git checkout -b feature/amazing-feature)
+3. Commit your changes (git commit -m 'Add amazing feature')
+4. Push to the branch (git push origin feature/amazing-feature)
+5. Open a Pull Request
+
+📁 Project Structure
+
 ```
-
----
+numintense/
+├── numintense_pro.py      # 🎯 MAIN EXECUTABLE
+├── install.py            # 🔧 INSTALLATION
+├── requirements.txt      # 📦 DEPENDENCIES
+├── config.json          # ⚙️ CONFIGURATION
+├── README.md           # 📚 DOCUMENTATION
+├── LICENSE             # 📄 LICENSE
+├── setup.sh           # 🐧 LINUX/MAC SETUP
+├── setup.bat          # 🪟 WINDOWS SETUP
+├── modules/           # 🛠️ INTELLIGENCE MODULES
+│   ├── email_check.py
+│   ├── social_osint.py
+│   └── advanced_dorks.py
+├── apis/              # 🔌 API INTEGRATIONS
+│   └── secure_api.py
+└── utils/             # 🧰 UTILITIES
+    └── helpers.py
+```
 
 ⚖️ Legal Disclaimer
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x100/ff0000/ffffff?text=⚠️+IMPORTANT+LEGAL+NOTICE+⚠️" alt="Legal Warning" width="600">
-</p>
+⚠️ IMPORTANT: LEGAL COMPLIANCE
 
-✅ Approved Uses
+This tool is designed for:
 
-· Authorized Security Research
-· Ethical Hacking with Permission
-· Digital Forensics Investigations
-· Cybersecurity Education
-· Personal Security Awareness
+· ✅ Authorized Security Research
+· ✅ Ethical Hacking with Permission
+· ✅ Digital Forensics Investigations
+· ✅ Cybersecurity Education
+· ✅ Personal Security Awareness
 
-❌ Prohibited Uses
+PROHIBITED USES:
 
-· Unauthorized access to systems
-· Harassment or stalking
-· Illegal surveillance
-· Commercial exploitation without permission
+· ❌ Unauthorized access to systems
+· ❌ Harassment or stalking
+· ❌ Illegal surveillance
+· ❌ Commercial exploitation without permission
+· ❌ Any activity violating local laws
 
-By using this tool, you agree to use it only for legitimate, authorized purposes and comply with all applicable laws.
+Users are solely responsible for:
 
----
+· Ensuring proper authorization before use
+· Compliance with all applicable laws
+· Respecting privacy and data protection regulations
+· Ethical use of gathered information
+
+By using this tool, you agree to use it only for legitimate, authorized purposes.
 
 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-<p align="center">
-  <img src="https://via.placeholder.com/400x100/0d1117/ffffff?text=MIT+License+•+Open+Source+•+Free+to+Use" alt="License" width="400">
-</p>
-
----
-
-🏆 Credits & Recognition
+🏆 Credits
 
 Developer: GulsHan Yadav
 Security Research: NumIntense Team
 Special Thanks: Open-source community contributors
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x100/1a1a2e/ffffff?text=🌟+Support+Open+Source+•+Star+⭐+the+Repository+🌟" alt="Support" width="600">
-</p>
+🌟 Support the Project
 
-🔗 Important Links
+If you find NumIntense useful, please consider:
+
+1. ⭐ Starring the repository on GitHub
+2. 🐛 Reporting issues and bugs
+3. 💡 Suggesting new features
+4. 🔄 Sharing with colleagues
+5. 🏗️ Contributing code improvements
+
+🔗 Links
 
 · GitHub Repository: https://github.com/GulsHanyadav788/numintense
 · Issue Tracker: https://github.com/GulsHanyadav788/numintense/issues
@@ -378,11 +322,8 @@ Special Thanks: Open-source community contributors
 
 ---
 
-<p align="center">
-  <img src="https://via.placeholder.com/600x50/0d1117/00ff88?text=NumIntense+-+Empowering+Open+Source+OSINT+🔍" alt="Footer" width="600">
-</p>
+NumIntense - Empowering open-source OSINT for everyone 🔍
 
-<p align="center">
-  <em>"Knowledge is power, but ethics give it purpose." - GulsHan Yadav</em>
-</p>
+"Knowledge is power, but ethics give it purpose." - GulsHan Yadav
+
 ```
