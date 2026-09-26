@@ -2,6 +2,8 @@
 
 **NumIntense** is a powerful open-source Python CLI tool for **OSINT (Open Source Intelligence)** and **phone number intelligence**.  
 Developed by **GulsHan Yadav**, it helps ethical hackers, cybersecurity researchers, and digital investigators extract detailed information about phone numbers, emails, and domains.
+ 
+this tool not promising for accurate or correct data. its make mistakes. 
 
 ## ⚡ Features
 
@@ -243,27 +245,7 @@ Code Contributions
 4. Push to the branch (git push origin feature/amazing-feature)
 5. Open a Pull Request
 
-📁 Project Structure
 
-```
-numintense/
-├── numintense_pro.py      # 🎯 MAIN EXECUTABLE
-├── install.py            # 🔧 INSTALLATION
-├── requirements.txt      # 📦 DEPENDENCIES
-├── config.json          # ⚙️ CONFIGURATION
-├── README.md           # 📚 DOCUMENTATION
-├── LICENSE             # 📄 LICENSE
-├── setup.sh           # 🐧 LINUX/MAC SETUP
-├── setup.bat          # 🪟 WINDOWS SETUP
-├── modules/           # 🛠️ INTELLIGENCE MODULES
-│   ├── email_check.py
-│   ├── social_osint.py
-│   └── advanced_dorks.py
-├── apis/              # 🔌 API INTEGRATIONS
-│   └── secure_api.py
-└── utils/             # 🧰 UTILITIES
-    └── helpers.py
-```
 
 ⚖️ Legal Disclaimer
 
