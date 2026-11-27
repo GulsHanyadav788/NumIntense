@@ -309,3 +309,46 @@ NumIntense - Empowering open-source OSINT for everyone 🔍
 "Knowledge is power, but ethics give it purpose." - GulsHan Yadav
 
 ```
+
+---
+
+## NumIntense Free Intel (Local dashboard overlay)
+
+A separate, standard-library-only local dashboard has been added without replacing the original CLI modules.
+
+
+### Start
+
+```bash
+python run_free_intel.py
+```
+Then open `http://127.0.0.1:8765` on the same device.
+
+### Included tools
+- Domain: DNS A/AAAA and public DNS-over-HTTPS MX/TXT/NS, RDAP metadata, TLS certificate details.
+- IP: RDAP network registration details plus private/global address classification.
+- URL: parse-only safety review (the URL is **not** visited or downloaded).
+- Local file utility: SHA-256, SHA-1, MD5 and file size via `intelligence.file_tools.fingerprint(path)`.
+
+These tools use free public services, may be unavailable offline, and show errors rather than claiming a lookup succeeded. No paid API keys or additional pip packages are needed. The dashboard binds only to `127.0.0.1`.
+
+Use only for lawful, authorized investigations. Phone-number identity claims from third-party lookups are not verified by this overlay.
+
+## Free Intelligence Dashboard (added)
+
+Run the local dashboard/API with:
+
+```bash
+python run_free_intel.py
+```
+
+Then open `http://127.0.0.1:8765` in your browser. It provides domain DNS/RDAP/TLS checks, IP RDAP, and URL parsing (the URL review does not visit the submitted URL). Local file fingerprint helpers are available in `intelligence/file_tools.py`.
+
+
+## Audit notes (2026-11-27)
+
+- Python syntax compilation was checked for all Python files.
+- Local dashboard startup, `/api/health`, dashboard HTML, URL review, and invalid-domain handling were smoke-tested.
+- External live DNS, RDAP, and TLS lookups could not be verified in this restricted test environment.
+- The legacy CLI requires dependencies listed in `requirements.txt`; those packages were not all installed in the audit environment, so its runtime was not verified here.
+- Phone-number and legacy OSINT modules may require external services/API keys and may return incomplete or inaccurate results. Do not treat results as verified identity or fact.
