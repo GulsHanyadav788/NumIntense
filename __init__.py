@@ -1,3 +1,2 @@
-# NumIntense APIs Package
-# Secure API integrations for enhanced intelligence
+# NumIntense Modules Package
 # Version: 3.1.0
